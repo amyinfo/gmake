@@ -35,12 +35,12 @@ func DBS(level int, depth uint, format string, args ...interface{}) {
 func DBF(level int, format string, file string, args ...interface{}) {
 	if IsDb(level) {
 		msg := fmt.Sprintf(format, args...)
-		fmt.Fprintf(os.Stdout, "%s\n", fmt.Sprintf(msg, file))
+		_, _ = fmt.Fprintf(os.Stdout, "%s\n", fmt.Sprintf(msg, file))
 	}
 }
 
 func DB(level int, format string, args ...interface{}) {
 	if IsDb(level) {
-		fmt.Fprintf(os.Stdout, format, args...)
+		_, _ = fmt.Fprintf(os.Stdout, format, args...)
 	}
 }
