@@ -20,8 +20,6 @@ import (
 var (
 	// Makefile search order
 	makefiles = []string{"GNUmakefile", "makefile", "Makefile"}
-
-	dbLevel int
 )
 
 func main() {
@@ -40,10 +38,6 @@ func realMain() int {
 	if config.PrintVersionFlag {
 		printVersion()
 		return config.MakeSuccess
-	}
-
-	if config.PrintDataBaseFlag {
-		// Will print database after reading makefiles
 	}
 
 	// Set up default variables
@@ -176,8 +170,8 @@ func decodeSwitches(argv []string) {
 			i++
 			if i < len(argv) && argv[i][0] != '-' {
 				var load float64
-				fmt.Sscanf(argv[i], "%f", &load)
-				config.MaxLoadAverage = load
+				_, _ = fmt.Sscanf(argv[i], "%f", &load)
+			config.MaxLoadAverage = load
 			}
 		case "-n":
 			config.JustPrintFlag = true
@@ -213,7 +207,9 @@ func decodeSwitches(argv []string) {
 			if i >= len(argv) {
 				fatal("option '-C' requires an argument")
 			}
-			goos.Chdir(argv[i])
+			if err := goos.Chdir(argv[i]); err != nil {
+				fatal("Cannot change directory to " + argv[i] + ": " + err.Error())
+			}
 		case "-W":
 			i++
 			if i >= len(argv) {
