@@ -13,8 +13,7 @@ var (
 )
 
 type dirContent struct {
-	path    string
-	entries map[string]bool
+	path string
 }
 
 func HashInitDirectories() {

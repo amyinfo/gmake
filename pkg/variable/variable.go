@@ -89,8 +89,7 @@ func LookupVariableInSet(name string, length int, set *types.VariableSet) *types
 	if set == nil {
 		return nil
 	}
-	v, _ := set.Variables[name[:length]]
-	return v
+	return set.Variables[name[:length]]
 }
 
 func DefineVariableInSet(name string, length int, value string,

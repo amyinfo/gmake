@@ -58,9 +58,9 @@ type UpdateStatus int
 
 const (
 	UpdateSuccess  UpdateStatus = 0 // successfully updated
-	UpdateNone                   = 1 // no attempt yet
-	UpdateQuestion               = 2 // needs update (-q)
-	UpdateFailed                 = 3 // update failed
+	UpdateNone     UpdateStatus = 1 // no attempt yet
+	UpdateQuestion UpdateStatus = 2 // needs update (-q)
+	UpdateFailed   UpdateStatus = 3 // update failed
 )
 
 // CmdState for command execution state.
@@ -68,10 +68,10 @@ const (
 type CmdState int
 
 const (
-	CmdNotStarted   CmdState = 0 // not yet started
-	CmdDepsRunning          = 1 // dep commands running
-	CmdRunning              = 2 // commands running
-	CmdFinished             = 3 // commands finished
+	CmdNotStarted  CmdState = 0 // not yet started
+	CmdDepsRunning CmdState = 1 // dep commands running
+	CmdRunning     CmdState = 2 // commands running
+	CmdFinished    CmdState = 3 // commands finished
 )
 
 // Read makefile flags.

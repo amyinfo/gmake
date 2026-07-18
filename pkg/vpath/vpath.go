@@ -16,19 +16,15 @@ type vpathEntry struct {
 }
 
 var (
-	vpaths     []vpathEntry
-	gpaths     []string // GPATH
-	envVpaths  []string
+	vpaths    []vpathEntry
+	envVpaths []string
 )
 
 func BuildVpathLists() {
 	// Build VPATH lists from .VPATH variable and environment
 	vpaths = nil
 	if envPath := os.Getenv("VPATH"); envPath != "" {
-		dirs := strings.Fields(envPath)
-		for _, d := range dirs {
-			envVpaths = append(envVpaths, d)
-		}
+		envVpaths = append(envVpaths, strings.Fields(envPath)...)
 	}
 }
 
