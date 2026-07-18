@@ -3,7 +3,6 @@ package expand
 import (
 	"strings"
 
-	"github.com/kyra/make/pkg/config"
 	"github.com/kyra/make/pkg/misc"
 	"github.com/kyra/make/pkg/types"
 )
@@ -87,8 +86,6 @@ func RecursivelyExpandForFile(v *types.Variable, file *types.File) string {
 }
 
 func HandleFunction(op *string, sp *string) int {
-	*sp = *sp
-	*op = *op
 	return 0
 }
 
@@ -136,9 +133,6 @@ func lookupAndExpand(ref string) string {
 	// Simple variable lookup
 	v := lookupVariable(ref, len(ref))
 	if v == nil {
-		if config.WarnUndefinedVariables {
-			// warning
-		}
 		return ""
 	}
 

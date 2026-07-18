@@ -229,7 +229,7 @@ func MakeSeed(seed uint) {
 
 func MakeRand() uint {
 	var b [4]byte
-	rand.Read(b[:])
+	_, _ = rand.Read(b[:])
 	return uint(binary.LittleEndian.Uint32(b[:]))
 }
 

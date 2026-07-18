@@ -147,8 +147,8 @@ type FileTimestamp uint64
 // Special timestamp values (filedef.h lines 200-213)
 const (
 	UnknownMtime    FileTimestamp = 0
-	NonexistentMtime              = 1
-	OldMtime                      = 2
+	NonexistentMtime FileTimestamp = 1
+	OldMtime        FileTimestamp = 2
 )
 
 // Ordinary mtime range

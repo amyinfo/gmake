@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build and publish release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25"
+          cache: true
+
+      - name: Run CI checks
+        run: make check
+
+      - name: Build all platform artifacts
+        run: make build
+
+      - name: Generate checksums
+        working-directory: build
+        run: sha256sum gmake-* > checksums.txt
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/gmake-linux-amd64
+            build/gmake-linux-arm64
+            build/gmake-darwin-amd64
+            build/gmake-darwin-arm64
+            build/gmake-windows-amd64.exe
+            build/gmake-windows-arm64.exe
+            build/checksums.txt
+          generate_release_notes: true

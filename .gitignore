@@ -1,5 +1,6 @@
 gmake
-make
+!cmd/gmake/
+build/
 make-4.4/
 
 *.tar.gz

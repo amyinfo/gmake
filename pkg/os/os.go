@@ -1,10 +1,7 @@
 package os
 
 import (
-	"fmt"
-	"os"
-	"syscall"
-	"unsafe"
+	goos "os"
 )
 
 const (
@@ -17,53 +14,50 @@ const (
 
 func CheckIOState() uint {
 	var state uint
-	if fi, _ := os.Stdin.Stat(); fi != nil {
-		if (fi.Mode() & os.ModeCharDevice) != 0 {
-			state |= IOStdinOK
-		} else {
-			state |= IOStdinOK
-		}
+	if _, err := goos.Stdin.Stat(); err == nil {
+		state |= IOStdinOK
 	}
-	if fi, _ := os.Stdout.Stat(); fi != nil {
+	if _, err := goos.Stdout.Stat(); err == nil {
 		state |= IOStdoutOK
 	}
-	if fi, _ := os.Stderr.Stat(); fi != nil {
+	if _, err := goos.Stderr.Stat(); err == nil {
 		state |= IOStderrOK
 	}
 	return state
 }
 
+// FdInherit sets close-on-exec flag.
 func FdInherit(fd int) {
-	syscall.CloseOnExec(fd)
+	setCloseOnExec(fd, true)
 }
 
+// FdNoinherit clears close-on-exec flag.
 func FdNoinherit(fd int) {
-	syscall.CloseOnExec(fd)
+	setCloseOnExec(fd, false)
 }
 
+// FdSetAppend sets the O_APPEND flag on a file descriptor.
 func FdSetAppend(fd int) {
-	var flags int = 0
-	// Use raw syscall for fcntl
-	syscall.Syscall(syscall.SYS_FCNTL, uintptr(fd), syscall.F_GETFL, uintptr(unsafe.Pointer(&flags)))
-	flags |= syscall.O_APPEND
-	syscall.Syscall(syscall.SYS_FCNTL, uintptr(fd), syscall.F_SETFL, uintptr(flags))
+	setAppend(fd, true)
 }
 
+// OsAnontmp creates an anonymous temporary file.
 func OsAnontmp() int {
-	f, err := os.CreateTemp("", "makeXXXXXX")
+	f, err := goos.CreateTemp("", "makeXXXXXX")
 	if err != nil {
 		return -1
 	}
-	fd := f.Fd()
+	fd := int(f.Fd())
 	f.Close()
-	os.Remove(f.Name())
-	return int(fd)
+	_ = goos.Remove(f.Name())
+	return fd
 }
 
-// ——— Jobserver implementation (POSIX pipes) ———
+// ——— Jobserver ———
 
+// Jobserver uses a channel-based semaphore in this Go port.
 var (
-	jobserverFDs   [2]int
+	jobserverTokensCh chan struct{}
 	jobserverEnabled_ bool
 )
 
@@ -78,101 +72,77 @@ func JobserverSetup(jobSlots int, style string) uint {
 	if jobSlots <= 1 {
 		return 0
 	}
-	// Create a pipe for the jobserver
-	p := [2]int{}
-	err := syscall.Pipe(p[:])
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "make: couldn't create jobserver pipe: %v\n", err)
-		return 0
+	jobserverTokensCh = make(chan struct{}, jobSlots-1)
+	for i := 0; i < jobSlots-1; i++ {
+		jobserverTokensCh <- struct{}{}
 	}
-	jobserverFDs = p
-
-	// Write N-1 tokens to the pipe
-	tokens := make([]byte, jobSlots-1)
-	for i := range tokens {
-		tokens[i] = '+'
-	}
-	syscall.Write(jobserverFDs[1], tokens)
-
 	jobserverEnabled_ = true
 	return 1
 }
 
 func JobserverParseAuth(auth string) uint {
-	if auth == "" {
-		return 0
-	}
-	_, err := fmt.Sscanf(auth, "%d,%d", &jobserverFDs[0], &jobserverFDs[1])
-	if err != nil {
-		return 0
-	}
+	_ = auth
+	// In a single-process Go port, the jobserver is always local.
 	jobserverEnabled_ = true
+	if jobserverTokensCh == nil {
+		jobserverTokensCh = make(chan struct{}, 1)
+	}
 	return 1
 }
 
 func JobserverGetAuth() string {
-	if !jobserverEnabled_ {
-		return ""
-	}
-	return fmt.Sprintf("%d,%d", jobserverFDs[0], jobserverFDs[1])
+	return ""
 }
 
 func JobserverClear() {
 	jobserverEnabled_ = false
-	jobserverFDs = [2]int{}
+	jobserverTokensCh = nil
 }
 
 func JobserverAcquireAll() uint {
-	if !jobserverEnabled_ {
+	if !jobserverEnabled_ || jobserverTokensCh == nil {
 		return 0
 	}
 	count := uint(0)
-	buf := make([]byte, 1024)
 	for {
-		n, err := syscall.Read(jobserverFDs[0], buf)
-		if err != nil || n == 0 {
-			break
+		select {
+		case <-jobserverTokensCh:
+			count++
+		default:
+			JobserverClear()
+			return count
 		}
-		count += uint(n)
 	}
-	JobserverClear()
-	return count
 }
 
 func JobserverRelease(isFatal int) {
-	if !jobserverEnabled_ {
+	if !jobserverEnabled_ || jobserverTokensCh == nil {
 		return
 	}
-	syscall.Write(jobserverFDs[1], []byte{'+'})
+	jobserverTokensCh <- struct{}{}
 }
 
-func JobserverPreChild(r int) {
-	// No-op on POSIX
-}
-
-func JobserverPostChild(r int) {
-	// No-op on POSIX
-}
-
-func JobserverPreAcquire() {
-	// No-op on POSIX
-}
+func JobserverPreChild(r int) {}
+func JobserverPostChild(r int) {}
+func JobserverPreAcquire()    {}
 
 func JobserverAcquire(timeout int) uint {
-	if !jobserverEnabled_ {
-		return 1 // No jobserver = always have a token
+	if !jobserverEnabled_ || jobserverTokensCh == nil {
+		return 1
 	}
-	buf := make([]byte, 1)
-	n, err := syscall.Read(jobserverFDs[0], buf)
-	if err != nil || n == 0 {
-		return 0
+	if timeout != 0 {
+		select {
+		case <-jobserverTokensCh:
+			return 1
+		default:
+			return 0
+		}
 	}
+	<-jobserverTokensCh
 	return 1
 }
 
-func JobserverSignal() {
-	// No-op on POSIX
-}
+func JobserverSignal() {}
 
 // ——— Output sync ———
 
@@ -190,9 +160,6 @@ func OsyncSetup() {
 }
 
 func OsyncGetMutex() string {
-	if !osyncEnabled_ {
-		return ""
-	}
 	return ""
 }
 
@@ -210,13 +177,16 @@ func OsyncAcquire() uint {
 	return 1
 }
 
-func OsyncRelease() {
-}
+func OsyncRelease() {}
 
 func GetBadStdin() int {
-	f, err := os.OpenFile("/dev/null", os.O_RDONLY, 0)
+	f, err := goos.OpenFile("/dev/null", goos.O_RDONLY, 0)
 	if err != nil {
 		return -1
 	}
 	return int(f.Fd())
 }
+
+// Export for main.go
+var Stderr = goos.Stderr
+

@@ -5,20 +5,14 @@ import (
 )
 
 var (
-	mu       sync.Mutex
-	strings  = make(map[string]string)
-	hits     uint64
-	misses   uint64
-	adds     uint64
+	mu      sync.Mutex
+	strings = make(map[string]string)
 )
 
 func Init() {
 	mu.Lock()
 	defer mu.Unlock()
 	strings = make(map[string]string)
-	hits = 0
-	misses = 0
-	adds = 0
 }
 
 func PrintStats(prefix string) {
@@ -39,11 +33,8 @@ func Add(str string) string {
 	mu.Lock()
 	defer mu.Unlock()
 	if cached, ok := strings[str]; ok {
-		hits++
 		return cached
 	}
-	misses++
-	adds++
 	cached := str
 	strings[cached] = cached
 	return cached
