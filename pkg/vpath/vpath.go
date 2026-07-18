@@ -97,6 +97,6 @@ func GpathSearch(file string, length int) int {
 
 func PrintVpathDataBase() {
 	for _, vp := range vpaths {
-		fmt.Fprintf(os.Stdout, "# VPATH %s: %s\n", vp.Pattern, strings.Join(vp.Paths, " "))
+		_, _ = fmt.Fprintf(os.Stdout, "# VPATH %s: %s\n", vp.Pattern, strings.Join(vp.Paths, " "))
 	}
 }

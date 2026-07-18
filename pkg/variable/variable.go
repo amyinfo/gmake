@@ -341,8 +341,8 @@ func PrintFileVariables(file *types.File) {
 		return
 	}
 	for name, v := range file.Variables.Set.Variables {
-		fmt.Fprintf(os.Stdout, "# %s:\n", name)
-		fmt.Fprintf(os.Stdout, "%s = %s\n", name, v.Value)
+		_, _ = fmt.Fprintf(os.Stdout, "# %s:\n", name)
+		_, _ = fmt.Fprintf(os.Stdout, "%s = %s\n", name, v.Value)
 	}
 }
 

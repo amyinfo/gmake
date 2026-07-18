@@ -16,30 +16,30 @@ var stopcharMap [256]uint16
 func init() {
 	for i := 0; i < 256; i++ {
 		ch := byte(i)
-		switch {
-		case ch == 0:
+		switch ch {
+		case 0:
 			stopcharMap[i] = config.MapNul
-		case ch == ' ' || ch == '\t':
+		case ' ', '\t':
 			stopcharMap[i] = config.MapBlank
-		case ch == '\n':
+		case '\n':
 			stopcharMap[i] = config.MapNewline
-		case ch == '#':
+		case '#':
 			stopcharMap[i] = config.MapComment
-		case ch == ';':
+		case ';':
 			stopcharMap[i] = config.MapSemi
-		case ch == '=':
+		case '=':
 			stopcharMap[i] = config.MapEquals
-		case ch == ':':
+		case ':':
 			stopcharMap[i] = config.MapColon
-		case ch == '$':
+		case '$':
 			stopcharMap[i] = config.MapVariable
-		case ch == '|':
+		case '|':
 			stopcharMap[i] = config.MapPipe
-		case ch == '.':
+		case '.':
 			stopcharMap[i] = config.MapDot
-		case ch == ',':
+		case ',':
 			stopcharMap[i] = config.MapComma
-		case ch == '/':
+		case '/':
 			stopcharMap[i] = config.MapDirsep
 		}
 	}
@@ -115,7 +115,7 @@ func AlphaCompare(a, b string) int {
 }
 
 func PrintSpaces(n uint) {
-	os.Stdout.WriteString(strings.Repeat(" ", int(n)))
+	_, _ = os.Stdout.WriteString(strings.Repeat(" ", int(n)))
 }
 
 func Xmalloc(size uintptr) interface{} {
@@ -247,7 +247,7 @@ func Writebuf(fd int, buf []byte) (int, error) {
 
 func Readbuf(fd int, buf []byte) (int, error) {
 	f := os.NewFile(uintptr(fd), "")
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 	return f.Read(buf)
 }
 
