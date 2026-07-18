@@ -4,20 +4,12 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"sync"
 )
 
-var (
-	directories = make(map[string]*dirContent)
-	mu          sync.RWMutex
-)
-
-type dirContent struct {
-	path string
-}
+var directories = make(map[string]bool)
 
 func HashInitDirectories() {
-	directories = make(map[string]*dirContent)
+	directories = make(map[string]bool)
 }
 
 func DirFileExistsP(dir, file string) int {

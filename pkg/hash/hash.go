@@ -97,7 +97,6 @@ func Init(ht *HashTable, size uint64,
 	ht.EmptySlots = ht.Size
 }
 
-// roundUpToPowerOf2 rounds n up to the nearest power of 2
 func roundUpToPowerOf2(n uint64) uint64 {
 	if n == 0 {
 		return 1
