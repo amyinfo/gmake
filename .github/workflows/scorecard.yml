@@ -37,6 +37,11 @@ jobs:
           name: sarif-results
           path: results.sarif
 
+      - name: Sanitize SARIF URIs
+        run: |
+          jq 'walk(if type == "object" and .uri? == "no file associated with this alert" then .uri = "results.sarif" else . end)' results.sarif > results.sanitized.sarif
+          mv results.sanitized.sarif results.sarif
+
       - uses: github/codeql-action/upload-sarif@v4
         continue-on-error: true
         with:
