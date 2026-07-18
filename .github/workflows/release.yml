@@ -21,8 +21,8 @@ jobs:
           go-version: "1.25"
           cache: true
 
-      - name: Run CI checks
-        run: make check
+      - name: Run tests
+        run: make test-race
 
       - name: Build all platform artifacts
         run: make build
