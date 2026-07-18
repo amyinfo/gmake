@@ -28,7 +28,7 @@ func DBS(level int, depth uint, format string, args ...interface{}) {
 	if IsDb(level) {
 		indent := strings.Repeat(" ", int(depth))
 		msg := fmt.Sprintf(format, args...)
-		fmt.Fprintf(os.Stdout, "%s%s\n", indent, msg)
+		_, _ = fmt.Fprintf(os.Stdout, "%s%s\n", indent, msg)
 	}
 }
 

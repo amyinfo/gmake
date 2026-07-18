@@ -48,7 +48,7 @@ func OsAnontmp() int {
 		return -1
 	}
 	fd := int(f.Fd())
-	f.Close()
+	_ = f.Close()
 	_ = goos.Remove(f.Name())
 	return fd
 }
