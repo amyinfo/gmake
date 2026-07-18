@@ -97,20 +97,6 @@ func Init(ht *HashTable, size uint64,
 	ht.EmptySlots = ht.Size
 }
 
-func roundUpToPowerOf2(n uint64) uint64 {
-	if n == 0 {
-		return 1
-	}
-	p := n - 1
-	p |= p >> 1
-	p |= p >> 2
-	p |= p >> 4
-	p |= p >> 8
-	p |= p >> 16
-	p |= p >> 32
-	return p + 1
-}
-
 // FindSlot returns a pointer to the slot for the given key.
 // Port of hash_find_slot() from hash.c
 func FindSlot(ht *HashTable, key interface{}) *unsafePointer {
