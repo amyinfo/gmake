@@ -70,9 +70,66 @@ jobs:
       - name: Test with race detector
         run: go test ./... -race -count=1 -v
 
+  mod-tidy:
+    name: go mod tidy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+          cache: true
+
+      - name: Check go mod tidy
+        run: |
+          go mod tidy
+          git diff --exit-code -- go.mod go.sum
+
+  codeql:
+    name: CodeQL
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+          cache: true
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: go
+          queries: security-and-quality
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:go"
+
+  dep-review:
+    name: Dependency Review
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+
   build:
-    name: Build artifacts
-    needs: [lint, sast, test]
+    name: Build (cross-platform)
+    needs: [lint, sast, test, mod-tidy]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -84,39 +141,3 @@ jobs:
 
       - name: Build all platforms
         run: make build
-
-      - name: Upload linux amd64
-        uses: actions/upload-artifact@v4
-        with:
-          name: gmake-linux-amd64
-          path: build/gmake-linux-amd64
-
-      - name: Upload linux arm64
-        uses: actions/upload-artifact@v4
-        with:
-          name: gmake-linux-arm64
-          path: build/gmake-linux-arm64
-
-      - name: Upload darwin amd64
-        uses: actions/upload-artifact@v4
-        with:
-          name: gmake-darwin-amd64
-          path: build/gmake-darwin-amd64
-
-      - name: Upload darwin arm64
-        uses: actions/upload-artifact@v4
-        with:
-          name: gmake-darwin-arm64
-          path: build/gmake-darwin-arm64
-
-      - name: Upload windows amd64
-        uses: actions/upload-artifact@v4
-        with:
-          name: gmake-windows-amd64
-          path: build/gmake-windows-amd64.exe
-
-      - name: Upload windows arm64
-        uses: actions/upload-artifact@v4
-        with:
-          name: gmake-windows-arm64
-          path: build/gmake-windows-arm64.exe
