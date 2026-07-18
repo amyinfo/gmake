@@ -12,19 +12,22 @@ all: clean test build
 # ─── Build ───────────────────────────────────────────────────────────
 .PHONY: build build-linux build-darwin build-windows
 
-build: build-linux build-darwin build-windows
-
 build-linux:
+	mkdir -p $(BUILD_DIR)
 	GOOS=linux   GOARCH=amd64 go build $(LDFLAGS) -o $(BUILD_DIR)/$(APP_NAME)-linux-amd64       ./cmd/gmake
 	GOOS=linux   GOARCH=arm64 go build $(LDFLAGS) -o $(BUILD_DIR)/$(APP_NAME)-linux-arm64       ./cmd/gmake
 
 build-darwin:
+	mkdir -p $(BUILD_DIR)
 	GOOS=darwin  GOARCH=amd64 go build $(LDFLAGS) -o $(BUILD_DIR)/$(APP_NAME)-darwin-amd64      ./cmd/gmake
 	GOOS=darwin  GOARCH=arm64 go build $(LDFLAGS) -o $(BUILD_DIR)/$(APP_NAME)-darwin-arm64      ./cmd/gmake
 
 build-windows:
+	mkdir -p $(BUILD_DIR)
 	GOOS=windows GOARCH=amd64 go build $(LDFLAGS) -o $(BUILD_DIR)/$(APP_NAME)-windows-amd64.exe ./cmd/gmake
 	GOOS=windows GOARCH=arm64 go build $(LDFLAGS) -o $(BUILD_DIR)/$(APP_NAME)-windows-arm64.exe ./cmd/gmake
+
+build: build-linux build-darwin build-windows
 
 # ─── Test ────────────────────────────────────────────────────────────
 .PHONY: test test-race test-verbose
