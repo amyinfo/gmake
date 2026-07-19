@@ -26,6 +26,7 @@ type shuffleConfig struct {
 }
 
 var config_ shuffleConfig
+var rng = rand.New(rand.NewSource(0)) // replaced on random mode init
 
 func GetMode() string {
 	if config_.strval == "" {
@@ -50,7 +51,7 @@ func SetMode(cmdarg string) {
 		config_.strval = ""
 	default:
 		if strings.ToLower(cmdarg) == "random" {
-			config_.seed = rand.Int63()
+			config_.seed = rng.Int63()
 		} else {
 			seed, err := strconv.ParseInt(cmdarg, 10, 64)
 			if err != nil {
@@ -66,7 +67,7 @@ func SetMode(cmdarg string) {
 
 func randomShuffleArray(a []interface{}) {
 	for i := len(a) - 1; i > 0; i-- {
-		j := rand.Intn(i + 1)
+		j := rng.Intn(i + 1)
 		a[i], a[j] = a[j], a[i]
 	}
 }
@@ -136,7 +137,7 @@ func ShuffleDepsRecursive(deps *types.Dep) {
 	}
 
 	if config_.mode == smRandom {
-		rand.Seed(config_.seed)
+		rng = rand.New(rand.NewSource(config_.seed))
 	}
 
 	shuffleDeps(deps)
