@@ -78,7 +78,6 @@ func LoadFile(flocp *types.Floc, file_ *types.File, noerror int) int {
 			copy(buf, ldname[:l])
 			buf[l] = 0
 			ldname = string(buf[:l])
-			nmlen = l
 			symname = ldname[fp+1 : fp+1+ep]
 		}
 	}

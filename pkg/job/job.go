@@ -24,9 +24,8 @@ var (
 	jobSlotsUsed    uint
 	goodStdinUsed   bool
 	waitingJobs     *types.Child
-	jobCounter      uint64
-	jobserverTokens uint
-	deadChildren    uint
+	jobCounter   uint64
+	deadChildren uint
 
 	childrenMu  sync.Mutex
 	childExited = make(chan struct{}, 16)
@@ -530,7 +529,6 @@ func NewJob(f *types.File) {
 			ReapChildren(1, 0)
 		}
 	}
-	jobserverTokens++
 	if config.IsDb(config.DbWhy) {
 		nm := "<builtin>"
 		if cmds.Fileinfo.Filenm != "" {

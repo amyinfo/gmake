@@ -24,7 +24,6 @@ import (
 
 var CommandsStarted uint
 var DefaultFile *types.File
-var goalListDep *types.Dep
 var goalDeps []*types.Goaldep
 var goalDep *types.Dep
 var considered uint
@@ -116,7 +115,6 @@ func UpdateGoalChain(goaldeps *types.Goaldep) types.UpdateStatus {
 	goalsOrig := dep.CopyDepChain(&goaldeps.Dep)
 	goals := goalsOrig
 
-	goalListDep = &goaldeps.Dep
 	goalDeps = nil
 	for g := goaldeps; g != nil; g = (*types.Goaldep)(unsafe.Pointer(g.Next)) {
 		goalDeps = append(goalDeps, g)
@@ -868,10 +866,8 @@ func librarySearch(lib string, mtimePtr *config.FileTimestamp) (string, config.F
 
 	p2 := libpatterns
 	for {
-		var len_ uint
-		lenInt := int(len_)
+		lenInt := 0
 		p := misc.FindNextToken(&p2, &lenInt)
-		len_ = uint(lenInt)
 		if p == "" {
 			break
 		}
