@@ -53,7 +53,7 @@ func writeOutput(out *Output, isErr int, msg string) {
 	if isErr != 0 {
 		f = os.Stderr
 	}
-	fmt.Fprint(f, msg)
+	_, _ = fmt.Fprint(f, msg)
 }
 
 func logWorkingDirectory(entering int) int {
@@ -129,13 +129,6 @@ func Outputs(isErr int, msg string) {
 	}
 	OutputStart()
 	writeOutput(OutputContext, isErr, msg)
-}
-
-func pumpFromTmp(from int, to *os.File) {
-}
-
-func outputTmpfd() int {
-	return -1
 }
 
 func setupTmpfile(out *Output) {

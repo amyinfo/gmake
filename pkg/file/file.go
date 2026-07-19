@@ -44,14 +44,10 @@ var noIntermediates bool
 // files is the hash table of all file records.
 var files = make(map[string]*types.File)
 
-// fileDirs tracks files that are directories (for double-colon entries).
-var fileDirs []*types.File
-
 // InitHashFiles initializes the file hash table.
 // Port of init_hash_files() from file.c line 1272-1276
 func InitHashFiles() {
 	files = make(map[string]*types.File)
-	fileDirs = nil
 	SnappedDeps = false
 	allSecondary = false
 	noIntermediates = false
@@ -316,12 +312,12 @@ func RemoveIntermediates(sig bool) {
 					}
 					if !config.RunSilent {
 						if !doneany {
-							fmt.Fprint(os.Stdout, "rm ")
+							_, _ = fmt.Fprint(os.Stdout, "rm ")
 							doneany = true
 						} else {
-							fmt.Fprint(os.Stdout, " ")
+							_, _ = fmt.Fprint(os.Stdout, " ")
 						}
-						fmt.Fprint(os.Stdout, f.Name)
+						_, _ = fmt.Fprint(os.Stdout, f.Name)
 					}
 				}
 				if status != nil {
@@ -333,7 +329,7 @@ func RemoveIntermediates(sig bool) {
 	}
 
 	if doneany && !sig {
-		fmt.Fprintln(os.Stdout)
+		_, _ = fmt.Fprintln(os.Stdout)
 	}
 }
 
@@ -905,10 +901,10 @@ func printFile(f *types.File) {
 		fmt.Println()
 	}
 
-	switch {
-	case f.LastMtime == 0:
+	switch f.LastMtime {
+	case 0:
 		fmt.Println("#  Modification time never checked.")
-	case f.LastMtime == 1:
+	case 1:
 		fmt.Println("#  File does not exist.")
 	default:
 		fmt.Printf("#  Last modified %s\n", FileTimestampSprintf(f.LastMtime))
