@@ -195,7 +195,7 @@ func evalMakefile(filename string, flags int) *types.Goaldep {
 		}
 		return deps
 	}
-	defer fp.Close()
+	defer func() { _ = fp.Close() }()
 
 	deps.Error = 0
 	if deps.File != nil && deps.File.LastMtime == uint64(config.NonexistentMtime) {
@@ -678,9 +678,10 @@ func parseAssignment(line string) (string, string, types.VariableFlavor) {
 
 	for i := 0; i < len(line); i++ {
 		ch := line[i]
-		if ch == '(' || ch == '{' {
+		switch ch {
+		case '(', '{':
 			depth++
-		} else if ch == ')' || ch == '}' {
+		case ')', '}':
 			depth--
 		}
 		if depth != 0 {

@@ -254,7 +254,7 @@ func UpdateFile(f *types.File, depth uint) types.UpdateStatus {
 		f2 = f.DoubleColon
 	}
 	if f2.Considered == considered {
-		if !(f2.Updated && f2.UpdateStatus > 0 && !f2.Dontcare && f2.NoDiag) {
+		if !f2.Updated || f2.UpdateStatus <= 0 || f2.Dontcare || !f2.NoDiag {
 			if f2.CommandState == types.CmdFinished {
 				return types.UpdateStatus(f2.UpdateStatus)
 			}
@@ -734,18 +734,18 @@ func touchFile(f *types.File) types.UpdateStatus {
 	statbuf, err := fd.Stat()
 	if err != nil {
 		perrorWithName("touch: fstat: ", f.Name)
-		fd.Close()
+		_ = fd.Close()
 		return types.UpdateFailed
 	}
 	buf := make([]byte, 1)
 	if _, err := fd.Read(buf); err != nil {
 		perrorWithName("touch: read: ", f.Name)
-		fd.Close()
+		_ = fd.Close()
 		return types.UpdateFailed
 	}
 	if _, err := fd.Seek(0, 0); err != nil {
 		perrorWithName("touch: lseek: ", f.Name)
-		fd.Close()
+		_ = fd.Close()
 		return types.UpdateFailed
 	}
 	if _, err := fd.Write(buf); err != nil {

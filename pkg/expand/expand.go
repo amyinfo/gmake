@@ -38,12 +38,12 @@ func VariableExpandString(_ string, s string, length int) string {
 		}
 
 		ch := s[pos]
-		switch {
-		case ch == '$':
+		switch ch {
+		case '$':
 			buf.WriteByte('$')
 			pos++
 
-		case ch == '(':
+		case '(':
 			pos++
 
 			depth := 1
@@ -98,7 +98,7 @@ func VariableExpandString(_ string, s string, length int) string {
 			val := referenceVariable(ref)
 			buf.WriteString(val)
 
-		case ch == '{':
+		case '{':
 			pos++
 
 			depth := 1

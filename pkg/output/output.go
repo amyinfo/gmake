@@ -44,7 +44,7 @@ func writeOutput(out *Output, isErr int, msg string) {
 			fd = out.Out
 		}
 		if fd != outputNone {
-			os.Stdout.WriteString(msg)
+			_, _ = os.Stdout.WriteString(msg)
 			return
 		}
 	}
@@ -207,6 +207,6 @@ func PfatalWithName(name string) {
 }
 
 func OutOfMemory() {
-	os.Stderr.WriteString(config.Program + ": *** virtual memory exhausted\n")
+	_, _ = os.Stderr.WriteString(config.Program + ": *** virtual memory exhausted\n")
 	os.Exit(2)
 }

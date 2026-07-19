@@ -107,7 +107,7 @@ func ReapChildren(block int, err int) {
 	reapMore := true
 	for (children != nil) && (block != 0 || reapMore) {
 		if err != 0 && block != 0 {
-			fmt.Fprintf(os.Stdout, "*** Waiting for unfinished jobs....\n")
+			_, _ = fmt.Fprintf(os.Stdout, "*** Waiting for unfinished jobs....\n")
 		}
 		func() {
 			childrenMu.Lock()
@@ -207,7 +207,7 @@ func processChild(c *types.Child, exitCode, exitSig, forceExitCode, coredump int
 	}
 	if c.ShBatchFile != "" {
 		debug.DBF(config.DbJobs, "Cleaning up temp batch file %s\n", c.ShBatchFile)
-		os.Remove(c.ShBatchFile)
+		_ = os.Remove(c.ShBatchFile)
 		c.ShBatchFile = ""
 	}
 	if c.GoodStdin {
@@ -389,7 +389,7 @@ doneParsing:
 	}
 	if config.JustPrintFlag || config.IsDb(config.DbPrint) ||
 		((flags&commands.CommandsSilent) == 0 && !config.RunSilent) {
-		fmt.Fprintf(os.Stdout, "%s\n", p[i:])
+		_, _ = fmt.Fprintf(os.Stdout, "%s\n", p[i:])
 	}
 	config.CommandsStarted++
 	if config.JustPrintFlag && (flags&commands.CommandsRecur) == 0 {
@@ -404,8 +404,8 @@ doneParsing:
 		return
 	}
 	output.OutputStart()
-	os.Stdout.Sync()
-	os.Stderr.Sync()
+	_ = os.Stdout.Sync()
+	_ = os.Stderr.Sync()
 	child.GoodStdin = !goodStdinUsed
 	if child.GoodStdin {
 		goodStdinUsed = true
@@ -534,7 +534,7 @@ func NewJob(f *types.File) {
 		if cmds.Fileinfo.Filenm != "" {
 			nm = fmt.Sprintf("%s:%d", cmds.Fileinfo.Filenm, cmds.Fileinfo.Lineno)
 		}
-		fmt.Fprintf(os.Stdout, "%s: update target '%s' due to: %s\n", nm, c.File.Name,
+		_, _ = fmt.Fprintf(os.Stdout, "%s: update target '%s' due to: %s\n", nm, c.File.Name,
 			expand.VariableExpandForFile("$?", c.File))
 	}
 	startWaitingJob(c)
