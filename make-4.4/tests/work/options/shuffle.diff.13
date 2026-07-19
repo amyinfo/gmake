@@ -1,0 +1,9 @@
+*** work/options/shuffle.base.13	Sun Jul 19 12:03:28 2026
+--- work/options/shuffle.log.13	Sun Jul 19 12:03:28 2026
+***************
+*** 1,3 ****
+! c_
+! b_
+! a_
+--- 1 ----
+! gmake: unknown option '--shuffle=reverse'

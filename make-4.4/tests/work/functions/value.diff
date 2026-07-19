@@ -1,0 +1,7 @@
+*** work/functions/value.base	Sun Jul 19 12:03:22 2026
+--- work/functions/value.log	Sun Jul 19 12:03:22 2026
+***************
+*** 1 ****
+! FOO = OO FOO = foo FOO = foo FOO = foo
+--- 1 ----
+! FOO = OO FOO = FOO = FOO =

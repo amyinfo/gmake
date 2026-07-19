@@ -1,0 +1,11 @@
+*** work/features/include.base.26	Sun Jul 19 12:02:14 2026
+--- work/features/include.log.26	Sun Jul 19 12:02:14 2026
+***************
+*** 1,5 ****
+! i1
+! i2
+! i3
+! i4
+! gmake: 'all' is up to date.
+--- 1 ----
+! No rule to make target ';@echo', needed by '%'

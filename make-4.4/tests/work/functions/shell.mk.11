@@ -1,0 +1,5 @@
+
+HI = $(shell echo hi)
+export bad = $(HI)
+.PHONY: all
+all:; : $(HI)

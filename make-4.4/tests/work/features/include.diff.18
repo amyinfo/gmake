@@ -1,0 +1,9 @@
+*** work/features/include.base.18	Sun Jul 19 12:02:14 2026
+--- work/features/include.log.18	Sun Jul 19 12:02:14 2026
+***************
+*** 1,3 ****
+! exit 1
+! work/features/include.mk.17:3: inc1: No such file or directory
+! gmake: *** [work/features/include.mk.17:5: foo] Error 1
+--- 1 ----
+! DEFAULT

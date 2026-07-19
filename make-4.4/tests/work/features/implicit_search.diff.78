@@ -1,0 +1,9 @@
+*** work/features/implicit_search.base.78	Sun Jul 19 12:02:14 2026
+--- work/features/implicit_search.log.78	Sun Jul 19 12:02:14 2026
+***************
+*** 1,2 ****
+! f77 hello.f -o hello
+! hello.tsk from hello
+--- 1,2 ----
+! Nothing to be done for 'FC=@echo f77'.
+! Nothing to be done for 'OUTPUT_OPTION='.

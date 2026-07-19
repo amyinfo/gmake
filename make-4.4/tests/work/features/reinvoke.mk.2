@@ -1,0 +1,7 @@
+
+ifdef RECURSE
+-include foo30723
+endif
+recurse: ; @$(MAKE) -f $(MAKEFILE_LIST) RECURSE=1 test
+test: ; @echo F.O=$(F.O)
+foo30723: ; @touch $@

@@ -1,0 +1,10 @@
+*** work/features/implicit_search.base.57	Sun Jul 19 12:02:13 2026
+--- work/features/implicit_search.log.57	Sun Jul 19 12:02:13 2026
+***************
+*** 1,2 ****
+! fail 1
+! gmake: *** [work/features/implicit_search.mk.57:6: hello.c] Error 1
+--- 1,3 ----
+! hello.c
+! hello.f
+! No rule to make target 'hello.tsk', needed by 'all'

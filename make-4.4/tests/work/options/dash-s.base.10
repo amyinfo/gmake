@@ -1,0 +1,2 @@
+MAKEFLAGS=s
+two

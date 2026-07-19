@@ -1,0 +1,5 @@
+
+.SECONDEXPANSION:
+.PHONY: bye.1 bye.2
+all: bye.x
+bye.x: %.x: $$(firstword %.1) $$(firstword %.2); $(info $@ from $^)

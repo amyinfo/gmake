@@ -1,0 +1,21 @@
+*** work/functions/call.base	Sun Jul 19 12:03:18 2026
+--- work/functions/call.log	Sun Jul 19 12:03:18 2026
+***************
+*** 1,8 ****
+- foo bar
+- default file file
+- b d f
+  
+  
+! b
+! bar foo baz
+! foo bar baz blarp quux 
+--- 1,8 ----
+  
+  
+! 
+! 
+! 
+! 
+! 
+! 

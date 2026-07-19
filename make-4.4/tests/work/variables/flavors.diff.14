@@ -1,0 +1,7 @@
+*** work/variables/flavors.base.14	Sun Jul 19 12:04:21 2026
+--- work/variables/flavors.log.14	Sun Jul 19 12:04:21 2026
+***************
+*** 1 ****
+! Good$bye $what Hello
+--- 1 ----
+! = Goodye$what Hello

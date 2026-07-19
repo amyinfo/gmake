@@ -1,0 +1,12 @@
+*** work/features/targetvars.base.38	Sun Jul 19 12:03:16 2026
+--- work/features/targetvars.log.38	Sun Jul 19 12:03:16 2026
+***************
+*** 1,3 ****
+! base make=base shell=
+! mid make=mid shell=mid
+! all make=environ shell=environ
+--- 1,4 ----
+! gmake: *** extraneous `else'.
+! gmake: *** extraneous `else'.
+! Nothing to be done for 'midexport=export'.
+! Nothing to be done for 'baseexport=unexport'.

@@ -1,0 +1,13 @@
+gmake: Entering directory '/home/kyra/workplace/go/make/make-4.4/tests'
+/home/kyra/workplace/go/make/gmake -f work/features/recursion.mk foo
+gmake[1]: Entering directory '/home/kyra/workplace/go/make/make-4.4/tests'
+/home/kyra/workplace/go/make/gmake
+MAKELEVEL = 1
+/home/kyra/workplace/go/make/gmake -f work/features/recursion.mk last
+gmake[2]: Entering directory '/home/kyra/workplace/go/make/make-4.4/tests'
+/home/kyra/workplace/go/make/gmake
+MAKELEVEL = 2
+THE END
+gmake[2]: Leaving directory '/home/kyra/workplace/go/make/make-4.4/tests'
+gmake[1]: Leaving directory '/home/kyra/workplace/go/make/make-4.4/tests'
+gmake: Leaving directory '/home/kyra/workplace/go/make/make-4.4/tests'

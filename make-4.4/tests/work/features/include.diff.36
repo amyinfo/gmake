@@ -1,0 +1,14 @@
+*** work/features/include.base.36	Sun Jul 19 12:02:14 2026
+--- work/features/include.log.36	Sun Jul 19 12:02:14 2026
+***************
+*** 1,8 ****
+! bizbaz
+! bazbiz
+! foobar
+! barfoo
+! GNUmakefile
+! makefile
+! Makefile
+! gmake: 'all' is up to date.
+--- 1 ----
+! gmake: unknown option -- 'E'

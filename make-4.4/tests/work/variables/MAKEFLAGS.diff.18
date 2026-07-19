@@ -1,0 +1,7 @@
+*** work/variables/MAKEFLAGS.base.18	Sun Jul 19 12:04:20 2026
+--- work/variables/MAKEFLAGS.log.18	Sun Jul 19 12:04:20 2026
+***************
+*** 1 ****
+! /makeflags='B --trace'/
+--- 1 ----
+! gmake: unknown option '--trace'

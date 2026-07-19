@@ -1,0 +1,10 @@
+
+all: 1 2; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl out success
+-include 1.inc 2.inc
+.RECIPEPREFIX := >
+1.inc:
+> @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl file ONE.inc wait THREE.inc file TWO.inc
+> @echo '1: ; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl file ONE wait THREE file TWO' > $@
+2.inc:
+> @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl wait ONE.inc file THREE.inc
+> @echo '2: ; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl wait ONE file THREE' > $@

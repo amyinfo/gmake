@@ -1,0 +1,7 @@
+No rule to make target 'main.c', needed by 'main.o'
+No rule to make target 'defs.h', needed by 'main.o'
+No rule to make target 'kbd.c', needed by 'kbd.o'
+No rule to make target 'command.h', needed by 'kbd.o'
+No rule to make target 'command.c', needed by 'commands.o'
+No rule to make target 'display.c', needed by 'display.o'
+No rule to make target 'buffer.h', needed by 'display.o'

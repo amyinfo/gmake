@@ -1,0 +1,2 @@
+sh: -c: line 1: syntax error near unexpected token `foo'
+sh: -c: line 1: `echo (foo'

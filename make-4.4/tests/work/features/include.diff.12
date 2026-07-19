@@ -1,0 +1,7 @@
+*** work/features/include.base.12	Sun Jul 19 12:02:14 2026
+--- work/features/include.log.12	Sun Jul 19 12:02:14 2026
+***************
+*** 1 ****
+! DONE
+--- 1 ----
+! gmake: option '-I' requires an argument

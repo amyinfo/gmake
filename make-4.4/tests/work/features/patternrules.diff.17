@@ -1,0 +1,7 @@
+*** work/features/patternrules.base.17	Sun Jul 19 12:03:10 2026
+--- work/features/patternrules.log.17	Sun Jul 19 12:03:10 2026
+***************
+*** 1 ****
+! gmake: Nothing to be done for 'all'.
+--- 1 ----
+! No rule to make target 'hello.tsk', needed by 'all'

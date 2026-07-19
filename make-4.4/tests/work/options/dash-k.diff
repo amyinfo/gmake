@@ -1,0 +1,17 @@
+*** work/options/dash-k.base	Sun Jul 19 12:03:26 2026
+--- work/options/dash-k.log	Sun Jul 19 12:03:26 2026
+***************
+*** 1,5 ****
+! cc -c main.c
+! gmake: *** No rule to make target 'kbd.c', needed by 'kbd.o'.
+! cc -c commands.c
+! cc -c display.c
+! gmake: Target 'edit' not remade because of errors.
+--- 1,7 ----
+! No rule to make target 'main.c', needed by 'main.o'
+! No rule to make target 'defs.h', needed by 'main.o'
+! No rule to make target 'kbd.c', needed by 'kbd.o'
+! No rule to make target 'command.h', needed by 'kbd.o'
+! No rule to make target 'command.c', needed by 'commands.o'
+! No rule to make target 'display.c', needed by 'display.o'
+! No rule to make target 'buffer.h', needed by 'display.o'

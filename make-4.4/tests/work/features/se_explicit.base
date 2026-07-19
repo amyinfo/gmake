@@ -1,0 +1,3 @@
+$(PRE)
+bar$biz
+foo$bar : bar$baz bar$biz

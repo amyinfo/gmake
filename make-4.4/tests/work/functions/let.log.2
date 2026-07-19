@@ -1,0 +1,316 @@
+blankvar
+side-effect
+runtime: goroutine stack exceeds 1000000000-byte limit
+runtime: sp=0xc020260490 stack=[0xc020260000, 0xc040260000]
+fatal error: stack overflow
+
+runtime stack:
+runtime.throw({0x53cede?, 0x42edbb?})
+	/usr/local/go/src/runtime/panic.go:1094 +0x48 fp=0xc000059e98 sp=0xc000059e68 pc=0x471d48
+runtime.newstack()
+	/usr/local/go/src/runtime/stack.go:1159 +0x5bd fp=0xc000059fc8 sp=0xc000059e98 pc=0x45931d
+runtime.morestack()
+	/usr/local/go/src/runtime/asm_amd64.s:620 +0x7d fp=0xc000059fd0 sp=0xc000059fc8 pc=0x476bfd
+
+goroutine 1 gp=0xc000002380 m=2 mp=0xc00003e808 [running]:
+github.com/kyra/make/pkg/expand.VariableExpandString({0x0?, 0x0?}, {0xc00011c01c, 0xf?}, 0xf?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:14 +0x1794 fp=0xc0202604a0 sp=0xc020260498 pc=0x4d8214
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938e98?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc0202604d8 sp=0xc0202604a0 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc020260698 sp=0xc0202604d8 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938e88?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938e88?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc020260858 sp=0xc020260698 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938e88?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020260890 sp=0xc020260858 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc020260a50 sp=0xc020260890 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938e78?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938e78?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc020260c10 sp=0xc020260a50 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938e78?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020260c48 sp=0xc020260c10 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc020260e08 sp=0xc020260c48 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938e68?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938e68?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc020260fc8 sp=0xc020260e08 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938e68?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020261000 sp=0xc020260fc8 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc0202611c0 sp=0xc020261000 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938e58?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938e58?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc020261380 sp=0xc0202611c0 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938e58?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc0202613b8 sp=0xc020261380 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc020261578 sp=0xc0202613b8 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938e48?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938e48?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc020261738 sp=0xc020261578 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938e48?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020261770 sp=0xc020261738 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc020261930 sp=0xc020261770 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938e38?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938e38?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc020261af0 sp=0xc020261930 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938e38?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020261b28 sp=0xc020261af0 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc020261ce8 sp=0xc020261b28 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938e28?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938e28?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc020261ea8 sp=0xc020261ce8 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938e28?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020261ee0 sp=0xc020261ea8 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc0202620a0 sp=0xc020261ee0 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938e18?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938e18?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc020262260 sp=0xc0202620a0 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938e18?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020262298 sp=0xc020262260 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc020262458 sp=0xc020262298 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938e08?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938e08?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc020262618 sp=0xc020262458 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938e08?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020262650 sp=0xc020262618 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc020262810 sp=0xc020262650 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938df8?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938df8?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc0202629d0 sp=0xc020262810 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938df8?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020262a08 sp=0xc0202629d0 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc020262bc8 sp=0xc020262a08 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938de8?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938de8?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc020262d88 sp=0xc020262bc8 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938de8?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020262dc0 sp=0xc020262d88 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc020262f80 sp=0xc020262dc0 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938dd8?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938dd8?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc020263140 sp=0xc020262f80 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938dd8?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020263178 sp=0xc020263140 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc020263338 sp=0xc020263178 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938dc8?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938dc8?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc0202634f8 sp=0xc020263338 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938dc8?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020263530 sp=0xc0202634f8 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc0202636f0 sp=0xc020263530 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938db8?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938db8?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc0202638b0 sp=0xc0202636f0 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938db8?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc0202638e8 sp=0xc0202638b0 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc020263aa8 sp=0xc0202638e8 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938da8?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938da8?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc020263c68 sp=0xc020263aa8 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938da8?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020263ca0 sp=0xc020263c68 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc020263e60 sp=0xc020263ca0 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000938d98?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000938d98?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc020264020 sp=0xc020263e60 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000938d98?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc020264058 sp=0xc020264020 pc=0x4d8286
+...1691724 frames elided...
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025caf8 sp=0xc04025c938 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000012198?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000012198?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc04025ccb8 sp=0xc04025caf8 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000012198?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc04025ccf0 sp=0xc04025ccb8 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025ceb0 sp=0xc04025ccf0 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000012188?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000012188?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc04025d070 sp=0xc04025ceb0 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000012188?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc04025d0a8 sp=0xc04025d070 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025d268 sp=0xc04025d0a8 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000012178?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000012178?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc04025d428 sp=0xc04025d268 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000012178?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc04025d460 sp=0xc04025d428 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025d620 sp=0xc04025d460 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000012168?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000012168?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc04025d7e0 sp=0xc04025d620 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000012168?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc04025d818 sp=0xc04025d7e0 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025d9d8 sp=0xc04025d818 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000012158?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000012158?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc04025db98 sp=0xc04025d9d8 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000012158?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc04025dbd0 sp=0xc04025db98 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025dd90 sp=0xc04025dbd0 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000012148?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000012148?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc04025df50 sp=0xc04025dd90 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000012148?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc04025df88 sp=0xc04025df50 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025e148 sp=0xc04025df88 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000012138?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000012138?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc04025e308 sp=0xc04025e148 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000012138?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc04025e340 sp=0xc04025e308 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025e500 sp=0xc04025e340 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000012128?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000012128?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc04025e6c0 sp=0xc04025e500 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000012128?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc04025e6f8 sp=0xc04025e6c0 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025e8b8 sp=0xc04025e6f8 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000012118?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000012118?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc04025ea78 sp=0xc04025e8b8 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000012118?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc04025eab0 sp=0xc04025ea78 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x7fa4376f40b0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025ec70 sp=0xc04025eab0 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000012108?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc000012108?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc04025ee30 sp=0xc04025ec70 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc000012108?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc04025ee68 sp=0xc04025ee30 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025f028 sp=0xc04025ee68 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc0000120f8?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc0000120f8?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc04025f1e8 sp=0xc04025f028 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc0000120f8?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc04025f220 sp=0xc04025f1e8 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x4af625?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025f3e0 sp=0xc04025f220 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc0000120e8?, 0x0?}, {0xc00011c01c, 0x0?}, 0xc0000120e8?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc04025f5a0 sp=0xc04025f3e0 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc0000120e8?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc04025f5d8 sp=0xc04025f5a0 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc00011c01e?, 0xc?}, {0xc00011c01e, 0x7?}, 0x5346e0?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025f798 sp=0xc04025f5d8 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc0000120c8?, 0x0?}, {0xc00011c01c, 0xc00010bc98?}, 0xc0000120c8?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:72 +0x1110 fp=0xc04025f958 sp=0xc04025f798 pc=0x4d7b90
+github.com/kyra/make/pkg/expand.referenceVariable({0xc0000120c8?, 0x79?})
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:178 +0x46 fp=0xc04025f990 sp=0xc04025f958 pc=0x4d8286
+github.com/kyra/make/pkg/expand.VariableExpandString({0xc000000380?, 0x0?}, {0xc00011c038, 0x515980?}, 0x1?)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:157 +0x3aa fp=0xc04025fb50 sp=0xc04025f990 pc=0x4d6e2a
+github.com/kyra/make/pkg/expand.VariableExpand(...)
+	/home/kyra/workplace/go/make/pkg/expand/expand.go:11
+github.com/kyra/make/pkg/commands.ExecuteFileCommands(0xc000000380)
+	/home/kyra/workplace/go/make/pkg/commands/commands.go:214 +0x21a fp=0xc04025fbf0 sp=0xc04025fb50 pc=0x4e7aba
+github.com/kyra/make/pkg/remake.remakeFile(0xc000000380)
+	/home/kyra/workplace/go/make/pkg/remake/remake.go:784 +0xb4 fp=0xc04025fc08 sp=0xc04025fbf0 pc=0x4f3674
+github.com/kyra/make/pkg/remake.updateFile1(0xc000000380, 0x1)
+	/home/kyra/workplace/go/make/pkg/remake/remake.go:531 +0x839 fp=0xc04025fdb0 sp=0xc04025fc08 pc=0x4f1f39
+github.com/kyra/make/pkg/remake.UpdateFile(0x0?, 0x1)
+	/home/kyra/workplace/go/make/pkg/remake/remake.go:268 +0xc5 fp=0xc04025fde0 sp=0xc04025fdb0 pc=0x4f1685
+github.com/kyra/make/pkg/remake.UpdateGoalChain(0xc000113420)
+	/home/kyra/workplace/go/make/pkg/remake/remake.go:148 +0x4e5 fp=0xc04025fef0 sp=0xc04025fde0 pc=0x4f1025
+main.realMain()
+	/home/kyra/workplace/go/make/cmd/gmake/main.go:82 +0x8f fp=0xc04025ff38 sp=0xc04025fef0 pc=0x4f402f
+main.main()
+	/home/kyra/workplace/go/make/cmd/gmake/main.go:49 +0x13 fp=0xc04025ff50 sp=0xc04025ff38 pc=0x4f3f73
+runtime.main()
+	/usr/local/go/src/runtime/proc.go:285 +0x29d fp=0xc04025ffe0 sp=0xc04025ff50 pc=0x44013d
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1693 +0x1 fp=0xc04025ffe8 sp=0xc04025ffe0 pc=0x478921
+
+goroutine 2 gp=0xc0000028c0 m=nil [force gc (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:460 +0xce fp=0xc000038fa8 sp=0xc000038f88 pc=0x471e6e
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:466
+runtime.forcegchelper()
+	/usr/local/go/src/runtime/proc.go:373 +0xb3 fp=0xc000038fe0 sp=0xc000038fa8 pc=0x440473
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1693 +0x1 fp=0xc000038fe8 sp=0xc000038fe0 pc=0x478921
+created by runtime.init.7 in goroutine 1
+	/usr/local/go/src/runtime/proc.go:361 +0x1a
+
+goroutine 3 gp=0xc000002e00 m=nil [GC sweep wait]:
+runtime.gopark(0x1?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:460 +0xce fp=0xc000039780 sp=0xc000039760 pc=0x471e6e
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:466
+runtime.bgsweep(0xc00005a000)
+	/usr/local/go/src/runtime/mgcsweep.go:323 +0xdf fp=0xc0000397c8 sp=0xc000039780 pc=0x42b49f
+runtime.gcenable.gowrap1()
+	/usr/local/go/src/runtime/mgc.go:212 +0x25 fp=0xc0000397e0 sp=0xc0000397c8 pc=0x41f6a5
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1693 +0x1 fp=0xc0000397e8 sp=0xc0000397e0 pc=0x478921
+created by runtime.gcenable in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:212 +0x66
+
+goroutine 4 gp=0xc000002fc0 m=nil [sleep]:
+runtime.gopark(0xc00005c060?, 0x3149f9d48fb?, 0x0?, 0x0?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:460 +0xce fp=0xc000039f38 sp=0xc000039f18 pc=0x471e6e
+runtime.goparkunlock(...)
+	/usr/local/go/src/runtime/proc.go:466
+runtime.(*scavengerState).sleep(0x648720, 0x41309edf00000000)
+	/usr/local/go/src/runtime/mgcscavenge.go:504 +0xf6 fp=0xc000039fa8 sp=0xc000039f38 pc=0x4290f6
+runtime.bgscavenge(0xc00005a000)
+	/usr/local/go/src/runtime/mgcscavenge.go:662 +0x74 fp=0xc000039fc8 sp=0xc000039fa8 pc=0x4294f4
+runtime.gcenable.gowrap2()
+	/usr/local/go/src/runtime/mgc.go:213 +0x25 fp=0xc000039fe0 sp=0xc000039fc8 pc=0x41f645
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1693 +0x1 fp=0xc000039fe8 sp=0xc000039fe0 pc=0x478921
+created by runtime.gcenable in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:213 +0xa5
+
+goroutine 5 gp=0xc000003500 m=nil [finalizer wait]:
+runtime.gopark(0x44f295?, 0x42841c?, 0x40?, 0x96?, 0x490013?)
+	/usr/local/go/src/runtime/proc.go:460 +0xce fp=0xc000038620 sp=0xc000038600 pc=0x471e6e
+runtime.runFinalizers()
+	/usr/local/go/src/runtime/mfinal.go:210 +0x107 fp=0xc0000387e0 sp=0xc000038620 pc=0x41e647
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1693 +0x1 fp=0xc0000387e8 sp=0xc0000387e0 pc=0x478921
+created by runtime.createfing in goroutine 1
+	/usr/local/go/src/runtime/mfinal.go:172 +0x3d
+
+goroutine 17 gp=0xc000082380 m=nil [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:460 +0xce fp=0xc000034738 sp=0xc000034718 pc=0x471e6e
+runtime.gcBgMarkWorker(0xc000470000)
+	/usr/local/go/src/runtime/mgc.go:1463 +0xeb fp=0xc0000347c8 sp=0xc000034738 pc=0x421b8b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	/usr/local/go/src/runtime/mgc.go:1373 +0x25 fp=0xc0000347e0 sp=0xc0000347c8 pc=0x421a65
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1693 +0x1 fp=0xc0000347e8 sp=0xc0000347e0 pc=0x478921
+created by runtime.gcBgMarkStartWorkers in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:1373 +0x105
+
+goroutine 18 gp=0xc000082540 m=nil [GC worker (idle)]:
+runtime.gopark(0x0?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:460 +0xce fp=0xc000034f38 sp=0xc000034f18 pc=0x471e6e
+runtime.gcBgMarkWorker(0xc000470000)
+	/usr/local/go/src/runtime/mgc.go:1463 +0xeb fp=0xc000034fc8 sp=0xc000034f38 pc=0x421b8b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	/usr/local/go/src/runtime/mgc.go:1373 +0x25 fp=0xc000034fe0 sp=0xc000034fc8 pc=0x421a65
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1693 +0x1 fp=0xc000034fe8 sp=0xc000034fe0 pc=0x478921
+created by runtime.gcBgMarkStartWorkers in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:1373 +0x105
+
+goroutine 19 gp=0xc000082700 m=nil [GC worker (idle)]:
+runtime.gopark(0x3145e29a4ae?, 0x0?, 0x0?, 0x0?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:460 +0xce fp=0xc000035738 sp=0xc000035718 pc=0x471e6e
+runtime.gcBgMarkWorker(0xc000470000)
+	/usr/local/go/src/runtime/mgc.go:1463 +0xeb fp=0xc0000357c8 sp=0xc000035738 pc=0x421b8b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	/usr/local/go/src/runtime/mgc.go:1373 +0x25 fp=0xc0000357e0 sp=0xc0000357c8 pc=0x421a65
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1693 +0x1 fp=0xc0000357e8 sp=0xc0000357e0 pc=0x478921
+created by runtime.gcBgMarkStartWorkers in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:1373 +0x105
+
+goroutine 20 gp=0xc0000828c0 m=nil [GC worker (idle)]:
+runtime.gopark(0x3145e29aabe?, 0x1?, 0x22?, 0xa5?, 0x0?)
+	/usr/local/go/src/runtime/proc.go:460 +0xce fp=0xc00006bf38 sp=0xc00006bf18 pc=0x471e6e
+runtime.gcBgMarkWorker(0xc000470000)
+	/usr/local/go/src/runtime/mgc.go:1463 +0xeb fp=0xc00006bfc8 sp=0xc00006bf38 pc=0x421b8b
+runtime.gcBgMarkStartWorkers.gowrap1()
+	/usr/local/go/src/runtime/mgc.go:1373 +0x25 fp=0xc00006bfe0 sp=0xc00006bfc8 pc=0x421a65
+runtime.goexit({})
+	/usr/local/go/src/runtime/asm_amd64.s:1693 +0x1 fp=0xc00006bfe8 sp=0xc00006bfe0 pc=0x478921
+created by runtime.gcBgMarkStartWorkers in goroutine 1
+	/usr/local/go/src/runtime/mgc.go:1373 +0x105

@@ -1,0 +1,10 @@
+
+all: ; @echo hello
+
+a : b ; echo >> $@
+
+b : c ; test -f $@ || echo >> $@
+
+c: ; echo >> $@
+
+include $(F)

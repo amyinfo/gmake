@@ -1,0 +1,7 @@
+*** work/variables/MAKEFLAGS.base.25	Sun Jul 19 12:04:20 2026
+--- work/variables/MAKEFLAGS.log.25	Sun Jul 19 12:04:20 2026
+***************
+*** 1 ****
+! makeflags='iknqrsw -I/tmp -I/tmp -Onone -Onone -l2.5 -l2.5 --no-print-directory'
+--- 1 ----
+! gmake: unknown option -- 'O'

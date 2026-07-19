@@ -1,0 +1,10 @@
+*** work/options/print-directory.base.10	Sun Jul 19 12:03:28 2026
+--- work/options/print-directory.log.10	Sun Jul 19 12:03:28 2026
+***************
+*** 1,5 ****
+- gmake: Entering directory '/home/kyra/workplace/go/make/make-4.4/tests'
+- gmake[1]: Entering directory '/home/kyra/workplace/go/make/make-4.4/tests'
+  hi
+- gmake[1]: Leaving directory '/home/kyra/workplace/go/make/make-4.4/tests'
+- gmake: Leaving directory '/home/kyra/workplace/go/make/make-4.4/tests'
+--- 1 ----

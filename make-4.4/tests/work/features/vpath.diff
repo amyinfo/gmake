@@ -1,0 +1,12 @@
+*** work/features/vpath.base	Sun Jul 19 12:03:18 2026
+--- work/features/vpath.log	Sun Jul 19 12:03:18 2026
+***************
+*** 1,6 ****
+! cc -c work/main.c
+! cc -c kbd.c
+! cc -c commands.c
+! cc -c display.c
+! cc -c insert.c
+! cc -o edit main.o kbd.o commands.o display.o insert.o
+--- 1 ----
+! No rule to make target '$(objects)', needed by 'edit'

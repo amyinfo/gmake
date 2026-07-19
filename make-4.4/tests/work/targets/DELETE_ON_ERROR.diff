@@ -1,0 +1,11 @@
+*** work/targets/DELETE_ON_ERROR.base	Sun Jul 19 12:03:28 2026
+--- work/targets/DELETE_ON_ERROR.log	Sun Jul 19 12:03:28 2026
+***************
+*** 1,3 ****
+! exit 1 > all
+! gmake: *** [work/targets/DELETE_ON_ERROR.mk:3: all] Error 1
+! gmake: *** Deleting file 'all'
+--- 1,3 ----
+! exit 1 > 
+! sh: -c: line 1: syntax error near unexpected token `newline'
+! sh: -c: line 1: `exit 1 > '

@@ -1,0 +1,10 @@
+
+.RECIPEPREFIX = >
+.ONESHELL:
+SHELL = /usr/bin/perl
+.SHELLFLAGS = -e
+all:
+>	   @$$a=5
+>	    +7;
+>	@y=qw(a b c);
+>print "a = $$a, y = (@y)\n";

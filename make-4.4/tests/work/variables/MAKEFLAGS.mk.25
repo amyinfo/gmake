@@ -1,0 +1,4 @@
+
+MAKEFLAGS := iknqrsw -I/tmp -I/tmp -Onone -Onone -l2.5 -l2.5 --no-print-directory
+XX := $(shell echo "$$MAKEFLAGS")
+all:; $(info makeflags='$(XX)')

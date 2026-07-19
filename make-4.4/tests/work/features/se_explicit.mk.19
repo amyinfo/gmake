@@ -1,0 +1,10 @@
+
+.SECONDEXPANSION:
+
+all: hello.tsk
+dep1:=hello.o
+dep2:=hello.h
+hello.tsk: $$(dep1)
+hello.tsk: $$(dep2); $(info $@ from $^)
+hello.o:; $(info $@)
+hello.h:; $(info $@)

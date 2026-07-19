@@ -1,0 +1,5 @@
+
+
+all: bye.x
+%.x: $(firstword %.1); $(info $@ from $^)
+.PHONY: bye.1

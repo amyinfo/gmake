@@ -1,0 +1,4 @@
+
+all: hello.z
+%.z: %.x test.x ; touch $@
+%.x: ;

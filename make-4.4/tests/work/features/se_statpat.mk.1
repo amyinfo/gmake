@@ -1,0 +1,9 @@
+
+.SECONDEXPANSION:
+.DEFAULT: ; @echo '$@'
+
+foo.x foo.y: foo.%: $$(%_a) $$($$*_b)
+
+foo.x: x_a := bar
+
+%.x: x_b := baz

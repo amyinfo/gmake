@@ -1,0 +1,4 @@
+
+hello.o: hello.d; $(info $@)
+hello.d: hello.td; $(info $@)
+include hello.d

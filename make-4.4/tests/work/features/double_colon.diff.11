@@ -1,0 +1,11 @@
+*** work/features/double_colon.base.11	Sun Jul 19 12:02:12 2026
+--- work/features/double_colon.log.11	Sun Jul 19 12:02:12 2026
+***************
+*** 1,5 ****
+! update
+! update
+! update
+! update
+! update
+--- 1 ----
+! Nothing to be done for 'result'.

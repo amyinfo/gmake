@@ -1,0 +1,7 @@
+*** work/features/include.base.15	Sun Jul 19 12:02:14 2026
+--- work/features/include.log.15	Sun Jul 19 12:02:14 2026
+***************
+*** 1,2 ****
+- echo > inc1
+  DEFAULT
+--- 1 ----

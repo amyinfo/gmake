@@ -1,0 +1,3 @@
+touch gta
+work/features/patternrules.mk.33:4: warning: pattern recipe did not update peer target 'gtb'.
+gmake: 'all' is up to date.

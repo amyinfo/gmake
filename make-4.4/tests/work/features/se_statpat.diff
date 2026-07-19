@@ -1,0 +1,20 @@
+*** work/features/se_statpat.base	Sun Jul 19 12:03:13 2026
+--- work/features/se_statpat.log	Sun Jul 19 12:03:13 2026
+***************
+*** 1,14 ****
+! bar.a
+! baz.a
+! biz.a
+! buz.a
+! foo.a.1
+! bar.a.2
+! bar.a.3
+! baz.a.3
+! biz.a.3
+! bar.a.4
+! baz.a.4
+! biz.a.4
+! buz.a.5
+! a.6
+--- 1 ----
+! No rule to make target 'foo.%:', needed by 'foo.a'

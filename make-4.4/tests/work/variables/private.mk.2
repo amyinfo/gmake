@@ -1,0 +1,9 @@
+
+a:
+private F = g
+G := $(F)
+a:
+b: F = b
+
+a b: ; @echo $@: F=$(F) / G=$(G)
+a: b

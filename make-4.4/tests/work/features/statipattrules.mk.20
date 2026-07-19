@@ -1,0 +1,5 @@
+
+
+.PHONY: lib/bye.1 lib/bye.2
+all: lib/bye.x
+lib/bye.x: %.x: $(firstword %.1) $(firstword %.2); $(info $@ from $^)

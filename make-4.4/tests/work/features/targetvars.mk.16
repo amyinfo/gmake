@@ -1,0 +1,5 @@
+
+unexport hello=sun
+all: base exp
+base exp: ; @echo hello=$$hello
+exp: export hello=world

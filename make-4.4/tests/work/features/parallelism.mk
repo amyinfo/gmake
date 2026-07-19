@@ -1,0 +1,5 @@
+
+all : def_1 def_2 def_3
+def_1 : ; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl file ONE wait THREE out TWO
+def_2 : ; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl wait FOUR file THREE
+def_3 : ; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl wait ONE file FOUR

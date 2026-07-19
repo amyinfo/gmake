@@ -1,0 +1,13 @@
+
+.RECIPEPREFIX := >
+.SECONDEXPANSION:
+
+all.foo.bar: %.foo.bar: %.one $$*-one
+
+all.foo.bar: %.bar: %.two $$*-two
+
+all.foo.bar:
+>	@echo $*
+>	@echo $^
+
+.DEFAULT:;@:

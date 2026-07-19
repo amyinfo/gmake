@@ -1,0 +1,3 @@
+/home/kyra/workplace/go/make/gmake
+/home/kyra/workplace/go/make/gmake -f work/variables/MAKE.mk foo
+/home/kyra/workplace/go/make/gmake

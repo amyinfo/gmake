@@ -1,0 +1,8 @@
+
+.SECONDEXPANSION:
+world.tsk: world.o $$(info 1 second expansion of $$@ prereqs)
+hello.tsk world.tsk &: hello.o $$(info 2 second expansion of $$@ prereqs); $(info $@ from $<)
+bye.tsk: bye.o $$(info second expansion of $$@ prereqs); $(info $@ from $<)
+hello.o: $$(info second expansion of $$@ prereqs); $(info $@)
+world.o: $$(info second expansion of $$@ prereqs); $(info $@)
+bye.o: $$(info second expansion of $$@ prereqs); $(info $@)

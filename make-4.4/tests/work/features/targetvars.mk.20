@@ -1,0 +1,21 @@
+
+all: mid
+mid: base
+
+ifeq ($(midexport),export)
+mid: export hello=mid
+else ifeq ($(midexport),unexport)
+mid: unexport hello=mid
+else
+mid: hello=mid
+endif
+
+ifeq ($(baseexport),export)
+base: export hello=base
+else ifeq ($(baseexport),unexport)
+base: unexport hello=base
+else
+base: hello=base
+endif
+
+all mid base:; @echo $@ make=$(hello) shell=$$hello

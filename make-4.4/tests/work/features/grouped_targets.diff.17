@@ -1,0 +1,15 @@
+*** work/features/grouped_targets.base.17	Sun Jul 19 12:02:13 2026
+--- work/features/grouped_targets.log.17	Sun Jul 19 12:02:13 2026
+***************
+*** 1,2 ****
+! gmake: 'x1' is up to date.
+! gmake: 'x2' is up to date.
+--- 1,8 ----
+! touch gta gtb
+! touch 
+! touch: missing file operand
+! Try 'touch --help' for more information.
+! touch gta gtb
+! touch 
+! touch: missing file operand
+! Try 'touch --help' for more information.

@@ -1,0 +1,8 @@
+*** work/features/se_implicit.base.28	Sun Jul 19 12:03:13 2026
+--- work/features/se_implicit.log.28	Sun Jul 19 12:03:13 2026
+***************
+*** 1,2 ****
+! exit 1
+! gmake: *** [work/features/se_implicit.mk.28:4: hello.tsk] Error 1
+--- 1 ----
+! No rule to make target 'hello.tsk', needed by 'all'

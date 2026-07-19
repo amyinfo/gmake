@@ -1,0 +1,4 @@
+
+all:; @echo hello=$$hello
+hello=sun
+dummy: hello?=world

@@ -1,0 +1,5 @@
+.PHONY: all
+$(shell kill -2 $$$$)
+STAT := $(.SHELLSTATUS)
+all: ; @echo STAT=$(STAT)
+              

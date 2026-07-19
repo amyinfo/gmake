@@ -1,0 +1,7 @@
+*** work/features/double_colon.base.14	Sun Jul 19 12:02:13 2026
+--- work/features/double_colon.log.14	Sun Jul 19 12:02:13 2026
+***************
+*** 1 ****
+! gmake: Nothing to be done for 'all'.
+--- 1 ----
+! No rule to make target 'hello.z', needed by 'all'

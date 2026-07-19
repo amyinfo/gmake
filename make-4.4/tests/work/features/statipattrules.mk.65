@@ -1,0 +1,4 @@
+
+.PHONY: lib/the%weird\\_hello_pattern%\\.1 lib/the%weird\\_hello_pattern%\\.2
+all: lib/the%weird\\_hello_pattern\\.x
+lib/the\%weird\\_hello_pattern\\.x: lib/the\%weird\\_%_pattern\\.x: $(wordlist 1, 99, lib/the\%weird\\_%_pattern%\\.1 lib/the\%weird\\_%_pattern%\\.2); $(info $@ from $^)

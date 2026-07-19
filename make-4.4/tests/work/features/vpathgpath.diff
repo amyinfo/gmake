@@ -1,0 +1,7 @@
+*** work/features/vpathgpath.base	Sun Jul 19 12:03:18 2026
+--- work/features/vpathgpath.log	Sun Jul 19 12:03:18 2026
+***************
+*** 1 ****
+! gmake: Nothing to be done for 'general'.
+--- 1 ----
+! No rule to make target 'foo.c', needed by 'foo.b'

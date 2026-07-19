@@ -1,0 +1,6 @@
+
+.SECONDEXPANSION:
+all: hello.tsk
+%.tsk: %.o; exit 1
+hello.o:;
+%.q: $$(shell touch hello.1);

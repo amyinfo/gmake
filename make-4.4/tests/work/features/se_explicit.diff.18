@@ -1,0 +1,7 @@
+*** work/features/se_explicit.base.18	Sun Jul 19 12:03:12 2026
+--- work/features/se_explicit.log.18	Sun Jul 19 12:03:12 2026
+***************
+*** 1 ****
+! work/features/se_explicit.mk.17:4: *** unterminated call to function 'firstword': missing ')'.  Stop.
+--- 1 ----
+! No rule to make target '$$(firstword', needed by 'bye.x'

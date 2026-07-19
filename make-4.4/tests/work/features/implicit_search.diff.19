@@ -1,0 +1,7 @@
+*** work/features/implicit_search.base.19	Sun Jul 19 12:02:13 2026
+--- work/features/implicit_search.log.19	Sun Jul 19 12:02:13 2026
+***************
+*** 1 ****
+! gmake: *** No rule to make target 'hello.c', needed by 'hello.o'.  Stop.
+--- 1 ----
+! No rule to make target 'hello.c', needed by 'hello.o'

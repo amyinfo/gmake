@@ -1,0 +1,5 @@
+
+all: hello.z
+%.z:: %.x; touch $@
+%.x: ;
+unrelated: hello.x

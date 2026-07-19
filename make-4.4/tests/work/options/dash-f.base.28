@@ -1,0 +1,4 @@
+touch bye.mk.src
+touch bye.mk
+hello, world
+gmake: 'all' is up to date.

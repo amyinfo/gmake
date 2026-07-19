@@ -1,0 +1,6 @@
+
+.SECONDEXPANSION:
+
+.PHONY: biz baz
+biz: baz ;
+biz: $$(info $$<)

@@ -1,0 +1,2 @@
+work/targets/WAIT.mk.12:2: .WAIT should not have prerequisites
+work/targets/WAIT.mk.12:3: .WAIT should not have commands

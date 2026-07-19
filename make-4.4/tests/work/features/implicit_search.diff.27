@@ -1,0 +1,10 @@
+*** work/features/implicit_search.base.27	Sun Jul 19 12:02:13 2026
+--- work/features/implicit_search.log.27	Sun Jul 19 12:02:13 2026
+***************
+*** 1,2 ****
+  hello.f
+! gmake: Nothing to be done for 'all'.
+--- 1,3 ----
++ hello.c
+  hello.f
+! No rule to make target 'hello.o', needed by 'all'

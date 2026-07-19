@@ -1,0 +1,9 @@
+*** work/variables/MAKEFLAGS.base.27	Sun Jul 19 12:04:20 2026
+--- work/variables/MAKEFLAGS.log.27	Sun Jul 19 12:04:20 2026
+***************
+*** 1,3 ****
+! work/variables/MAKEFLAGS.mk.27:2: update target 'all' due to: target does not exist
+! echo /erR --trace --no-print-directory -- FOO=bar/
+! /erR --trace --no-print-directory -- FOO=bar/
+--- 1 ----
+! gmake: unknown option '--trace'

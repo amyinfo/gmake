@@ -1,0 +1,9 @@
+*** work/targets/WAIT.base.12	Sun Jul 19 12:04:19 2026
+--- work/targets/WAIT.log.12	Sun Jul 19 12:04:19 2026
+***************
+*** 1,3 ****
+! start-pre1
+! end-pre1
+! pre2
+--- 1 ----
+! gmake: unknown option '--shuffle=reverse'

@@ -1,0 +1,7 @@
+*** work/features/targetvars.base.12	Sun Jul 19 12:03:15 2026
+--- work/features/targetvars.log.12	Sun Jul 19 12:03:15 2026
+***************
+*** 1 ****
+! ; ok
+--- 1 ----
+! No rule to make target 'FOO', needed by 'foo'

@@ -1,0 +1,3 @@
+
+$(shell ./basdfdfsed where)
+all: ; @echo $(.SHELLSTATUS)

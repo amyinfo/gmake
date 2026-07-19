@@ -1,0 +1,9 @@
+
+export HI = $(shell $($@.CMD))
+first.CMD = /usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl out hi
+second.CMD = /usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl sleep 4
+
+.PHONY: all first second
+all: first second
+
+first second: ; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl out $@ sleep 1 out $@

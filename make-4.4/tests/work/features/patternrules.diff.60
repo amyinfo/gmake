@@ -1,0 +1,8 @@
+*** work/features/patternrules.base.60	Sun Jul 19 12:03:11 2026
+--- work/features/patternrules.log.60	Sun Jul 19 12:03:11 2026
+***************
+*** 1,2 ****
+! lib/bye.x from lib/bye.1
+! gmake: Nothing to be done for 'all'.
+--- 1 ----
+! No rule to make target 'lib/bye.x', needed by 'all'

@@ -1,0 +1,7 @@
+*** work/targets/WAIT.base.13	Sun Jul 19 12:04:19 2026
+--- work/targets/WAIT.log.13	Sun Jul 19 12:04:19 2026
+***************
+*** 1,2 ****
+- work/targets/WAIT.mk.12:2: .WAIT should not have prerequisites
+- work/targets/WAIT.mk.12:3: .WAIT should not have commands
+--- 0 ----

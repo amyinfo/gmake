@@ -1,0 +1,7 @@
+*** work/variables/MAKE_RESTARTS.base	Sun Jul 19 12:04:20 2026
+--- work/variables/MAKE_RESTARTS.log	Sun Jul 19 12:04:20 2026
+***************
+*** 1,2 ****
+  MAKE_RESTARTS=
+- MAKE_RESTARTS=1
+--- 1 ----

@@ -1,0 +1,1 @@
+gmake: *** No rule to make target 'hello.x', needed by 'hello.z'.  Stop.

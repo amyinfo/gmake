@@ -1,0 +1,9 @@
+*** work/misc/utf8.base	Sun Jul 19 12:03:25 2026
+--- work/misc/utf8.log	Sun Jul 19 12:03:25 2026
+***************
+*** 1,2 ****
+  hello
+! gmake: Nothing to be done for 'all'.
+--- 1,2 ----
+  hello
+! Nothing to be done for 'all'.

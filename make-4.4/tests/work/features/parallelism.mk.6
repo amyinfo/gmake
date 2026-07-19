@@ -1,0 +1,9 @@
+
+.PHONY: all fail.1 fail.2 fail.3 ok
+all: fail.1 ok fail.2 fail.3
+
+fail.1: ; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl -q sleep 1 out $@ file fail.1 fail 1
+fail.2: ; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl -q sleep 2 out $@ wait fail.1 file fail.2 fail 1
+fail.3: ; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl -q sleep 3 out $@ wait fail.2 file fail.3 fail 1
+
+ok: ; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl -q sleep 4 wait fail.3 out OK

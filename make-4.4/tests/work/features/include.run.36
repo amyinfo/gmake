@@ -1,0 +1,2 @@
+# /home/kyra/workplace/go/make/make-4.4/tests/scripts/features/include:461:
+/home/kyra/workplace/go/make/gmake -E '%:;@echo $@' -E 'all:;' -E -include bizbaz -E -include bazbiz

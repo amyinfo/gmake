@@ -1,0 +1,6 @@
+
+hello.z:
+%.z: %.x; touch $@
+%.x: ;
+.SECONDARY: hello.x
+.NOTINTERMEDIATE:

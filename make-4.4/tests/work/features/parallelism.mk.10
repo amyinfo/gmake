@@ -1,0 +1,5 @@
+
+.INTERMEDIATE: file3
+file4: file3 ; @mv -f $< $@
+file3: file2 ; touch $@
+file2: file1 ; @touch $@

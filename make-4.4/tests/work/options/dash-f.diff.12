@@ -1,0 +1,7 @@
+*** work/options/dash-f.base.12	Sun Jul 19 12:03:26 2026
+--- work/options/dash-f.log.12	Sun Jul 19 12:03:26 2026
+***************
+*** 1 ****
+! gmake: *** Makefile from standard input specified twice.  Stop.
+--- 1 ----
+! gmake: unknown option -- 'y'

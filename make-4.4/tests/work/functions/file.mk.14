@@ -1,0 +1,3 @@
+# <hugestring>
+X1 := x$(file <file.out)y
+x:;@$(info $(X1))

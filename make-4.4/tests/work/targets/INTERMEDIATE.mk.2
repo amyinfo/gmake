@@ -1,0 +1,5 @@
+
+all: hello.z
+%.z: test.x; touch $@
+%.x: ;
+.INTERMEDIATE: test.x

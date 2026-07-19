@@ -1,0 +1,12 @@
+
+MSG = Fails
+.RECIPEPREFIX = >
+all:
+> @echo '$@: MAKEFLAGS=$(MAKEFLAGS)'
+> @MSG=Works $(MAKE) -e -f work/variables/MAKEFLAGS.mk.2 jump
+jump:
+> @echo '$@ $(MSG): MAKEFLAGS=$(MAKEFLAGS)'
+> @$(MAKE) -f work/variables/MAKEFLAGS.mk.2 print
+print:
+> @echo '$@ $(MSG): MAKEFLAGS=$(MAKEFLAGS)'
+.PHONY: all jump print

@@ -1,0 +1,8 @@
+*** work/features/override.base	Sun Jul 19 12:02:14 2026
+--- work/features/override.log	Sun Jul 19 12:02:14 2026
+***************
+*** 1 ****
+! end start
+--- 1,2 ----
+! Nothing to be done for 'recur=I'.
+! Nothing to be done for 'simple=J'.

@@ -1,0 +1,7 @@
+
+ifeq ($(MAKELEVEL),0)
+MAKEOVERRIDES += FOO+=bar
+endif
+.PHONY: M R
+M: ; @$(MAKE) --no-print-directory -f work/features/recursion.mk.2 R
+R: ; @echo '$(FOO)'

@@ -1,0 +1,7 @@
+*** work/variables/MAKEFILES.base	Sun Jul 19 12:04:20 2026
+--- work/variables/MAKEFILES.log	Sun Jul 19 12:04:20 2026
+***************
+*** 1 ****
+! DEFAULT RULE: M2=m2 M3=m3
+--- 1 ----
+! Nothing to be done for 'MAKEFILES=work/variables/MAKEFILES.mk.1 work/variables/MAKEFILES.mk.2'.

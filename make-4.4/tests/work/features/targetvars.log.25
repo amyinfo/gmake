@@ -1,0 +1,2 @@
+foobar.sh >/dev/null
+sh: line 1: foobar.sh: command not found

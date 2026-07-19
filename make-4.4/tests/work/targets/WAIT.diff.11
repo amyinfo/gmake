@@ -1,0 +1,13 @@
+*** work/targets/WAIT.base.11	Sun Jul 19 12:04:19 2026
+--- work/targets/WAIT.log.11	Sun Jul 19 12:04:19 2026
+***************
+*** 1,6 ****
+! start-pre1
+! pre2
+! end-pre1
+! start-npre1
+! end-npre1
+! npre2
+--- 1,2 ----
+! start-
+! wait PRE2: timeout after 10 seconds

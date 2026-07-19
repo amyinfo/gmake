@@ -1,0 +1,11 @@
+
+define rule
+foo: ; @echo $$@
+endef
+
+define make-rule
+$(eval $(rule))
+endef
+
+$(call make-rule)
+

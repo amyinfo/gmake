@@ -1,0 +1,5 @@
+
+ifneq ($(.INCLUDE_DIRS),somedir)
+$(warning Mismatched '$(.INCLUDE_DIRS)' != 'somedir')
+endif
+all:;@:

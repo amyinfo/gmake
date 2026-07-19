@@ -1,0 +1,9 @@
+
+define A
+a
+b
+endef
+OP = >
+FN = file.out
+$(file     $(OP)     $(FN),$(A))
+x:;@cat file.out

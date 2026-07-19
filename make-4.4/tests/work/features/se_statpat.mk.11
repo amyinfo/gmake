@@ -1,0 +1,7 @@
+
+deps:=hello.h
+.SECONDEXPANSION:
+.SECONDARY: hello.x
+all: hello.x
+hello.x: %.x: $$(deps); $(info $@)
+hello.h:; $(info $@)

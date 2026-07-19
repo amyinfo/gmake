@@ -1,0 +1,3 @@
+# hello
+X1 := x$(file <file.out)y
+x:;@echo $(X1)

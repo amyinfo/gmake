@@ -1,0 +1,7 @@
+*** work/features/include.base.13	Sun Jul 19 12:02:14 2026
+--- work/features/include.log.13	Sun Jul 19 12:02:14 2026
+***************
+*** 1 ****
+! gmake: *** No targets.  Stop.
+--- 1 ----
+! *** No targets specified and no makefile found.

@@ -1,0 +1,3 @@
+# shbang=#!/bin/bash
+# shell=SHELL=/bin/bash
+all:; @$(CMD)

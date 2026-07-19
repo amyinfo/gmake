@@ -1,0 +1,6 @@
+
+SHELL := /././/bin/sh
+one: two
+two: export SHELL := /.//bin/sh
+
+one two:;@echo "$@: $(SHELL) $$SHELL"

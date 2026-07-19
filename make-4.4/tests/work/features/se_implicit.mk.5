@@ -1,0 +1,6 @@
+
+.SECONDEXPANSION:
+foo.o: foo.c
+foo.c: ; @echo '$@'
+
+%.o: ; @echo '$@: {$<} $^'

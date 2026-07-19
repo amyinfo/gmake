@@ -1,0 +1,3 @@
+
+MAKEFLAGS:=B  -I/tmp
+all:; $(info makeflags='$(MAKEFLAGS)')

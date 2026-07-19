@@ -1,0 +1,4 @@
+
+.SECONDEXPANSION:
+hello.tsk:; exit 1
+unrelated: $$(shell touch hello.1);

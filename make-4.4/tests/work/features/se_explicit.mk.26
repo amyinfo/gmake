@@ -1,0 +1,6 @@
+
+.SECONDEXPANSION:
+vpath hello.c src
+all: hello.c; $(info $@ from $^)
+hello.c: $$(info second expansion of hello.c prereqs); $(info 1 $@)
+src/hello.c: $$(info second expansion of src/hello.c prereqs); $(info 2 $@)

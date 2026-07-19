@@ -1,0 +1,9 @@
+*** work/variables/define.base.11	Sun Jul 19 12:04:21 2026
+--- work/variables/define.log.11	Sun Jul 19 12:04:21 2026
+***************
+*** 1,2 ****
+! hello
+! world
+--- 1,2 ----
+! Nothing to be done for 'V1=@'.
+! Nothing to be done for 'V2=@'.

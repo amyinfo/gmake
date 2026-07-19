@@ -1,0 +1,4 @@
+
+.PHONY: foo.bar
+.SECONDEXPANSION:
+foo: $$(@\:%=%.bar); @echo '$^'

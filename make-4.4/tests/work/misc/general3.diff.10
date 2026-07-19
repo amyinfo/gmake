@@ -1,0 +1,6 @@
+*** work/misc/general3.base.10	Sun Jul 19 12:03:24 2026
+--- work/misc/general3.log.10	Sun Jul 19 12:03:24 2026
+***************
+*** 1 ****
+- gmake: [work/misc/general3.mk.10:1: x] Error 1 (ignored)
+--- 0 ----

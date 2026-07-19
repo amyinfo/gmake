@@ -1,0 +1,7 @@
+*** work/misc/bs-nl.base.19	Sun Jul 19 12:03:24 2026
+--- work/misc/bs-nl.log.19	Sun Jul 19 12:03:24 2026
+***************
+*** 1 ****
+! foo bar
+--- 1 ----
+! *** No targets specified and no makefile found.

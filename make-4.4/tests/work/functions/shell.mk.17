@@ -1,0 +1,3 @@
+
+out := $(shell bad-command 2>&1)
+all: ; @echo '$(.SHELLSTATUS): $(out)'

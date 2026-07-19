@@ -1,0 +1,9 @@
+*** work/features/targetvars.base.30	Sun Jul 19 12:03:16 2026
+--- work/features/targetvars.log.30	Sun Jul 19 12:03:16 2026
+***************
+*** 1,2 ****
+! hello=sun
+! hello=
+--- 1,2 ----
+! hello=moon
+! No rule to make target 'unexport', needed by 'exp'

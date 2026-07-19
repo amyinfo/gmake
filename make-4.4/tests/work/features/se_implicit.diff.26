@@ -1,0 +1,7 @@
+*** work/features/se_implicit.base.26	Sun Jul 19 12:03:13 2026
+--- work/features/se_implicit.log.26	Sun Jul 19 12:03:13 2026
+***************
+*** 1 ****
+! gmake: *** unterminated call to function 'firstword': missing ')'.  Stop.
+--- 1 ----
+! No rule to make target 'bye.x', needed by 'all'

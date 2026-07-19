@@ -1,0 +1,5 @@
+
+    slow: SHELL := echo
+    slow: .SHELLFLAGS := hoho
+    slow:; @foo bar
+    

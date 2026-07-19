@@ -1,0 +1,10 @@
+
+.SECONDEXPANSION:
+hello.tsk:: %.tsk: %.o $$(info 1 second expansion of $$@ prereqs); $(info 1 $@ from $<)
+hello.tsk:: %.tsk: %.o $$(info 2 second expansion of $$@ prereqs); $(info 2 $@ from $<)
+bye.tsk:: %.tsk: %.o $$(info 1 second expansion of $$@ prereqs); $(info 1 $@ from $<)
+bye.tsk:: %.tsk: %.o $$(info 2 second expansion of $$@ prereqs); $(info 2 $@ from $<)
+hello.o:: $$(info 1 second expansion of $$@ prereqs); $(info 1 $@)
+hello.o:: $$(info 2 second expansion of $$@ prereqs); $(info 2 $@)
+bye.o:: $$(info 1 second expansion of $$@ prereqs); $(info 1 $@)
+bye.o:: $$(info 2 second expansion of $$@ prereqs); $(info 2 $@)

@@ -1,0 +1,7 @@
+*** work/features/targetvars.base.17	Sun Jul 19 12:03:15 2026
+--- work/features/targetvars.log.17	Sun Jul 19 12:03:15 2026
+***************
+*** 1 ****
+! no build information
+--- 1 ----
+! No rule to make target 'BUILD_OBJ=$(shell', needed by 'base_metals_fmd_reports.sun5'

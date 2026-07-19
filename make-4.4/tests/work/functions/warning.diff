@@ -1,0 +1,8 @@
+*** work/functions/warning.base	Sun Jul 19 12:03:22 2026
+--- work/functions/warning.log	Sun Jul 19 12:03:22 2026
+***************
+*** 1,2 ****
+! work/functions/warning.mk:2: warning is yes
+! Some stuff
+--- 1 ----
+! Nothing to be done for 'WARNING1=yes'.

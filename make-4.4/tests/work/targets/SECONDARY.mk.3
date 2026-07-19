@@ -1,0 +1,14 @@
+
+.SECONDARY : test.1 test.2 test.3
+
+test : test.4
+
+%.4 : %.int %.3 ; touch $@
+
+%.int : %.3 %.2 ; touch $@
+
+%.3 : | %.2 ; touch $@
+
+%.2 : %.1 ; touch $@
+
+%.1 : %.0 ; touch $@

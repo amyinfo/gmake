@@ -1,0 +1,6 @@
+
+.SECONDEXPANSION:
+%.bin: %.x $$(info second expansion of $$@ prereqs); $(info $@ from $<)
+%.tsk: %.o $$(info second expansion of $$@ prereqs); $(info $@ from $<)
+%.x: $$(info second expansion of $$@ prereqs); $(info $@)
+%.o: $$(info second expansion of $$@ prereqs); $(info $@)

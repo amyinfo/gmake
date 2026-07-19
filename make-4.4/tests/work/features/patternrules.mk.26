@@ -1,0 +1,6 @@
+
+a.3:
+%.3: %.1 %.2 ; cat $^ >$@
+%.1 %.2: ; touch $*.1 $*.2
+install: a.1
+.PHONY: install

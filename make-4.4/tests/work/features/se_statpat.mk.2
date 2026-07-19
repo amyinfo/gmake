@@ -1,0 +1,22 @@
+
+.SECONDEXPANSION:
+.DEFAULT: ; @echo '$@'
+
+all: foo.a bar.a baz.a
+
+# Subtest #1
+foo.a foo.b: foo.%: foo.%.1; @:
+foo.a foo.b: foo.%: foo.%.2
+foo.a foo.b: foo.%: foo.%.3
+
+
+# Subtest #2
+bar.a bar.b: bar.%: bar.%.2
+bar.a bar.b: bar.%: bar.%.1; @:
+bar.a bar.b: bar.%: bar.%.3
+
+
+# Subtest #3
+baz.a baz.b: baz.%: baz.%.1
+baz.a baz.b: baz.%: baz.%.2
+baz.a baz.b: ; @:

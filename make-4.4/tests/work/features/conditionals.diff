@@ -1,0 +1,11 @@
+*** work/features/conditionals.base	Sun Jul 19 12:02:12 2026
+--- work/features/conditionals.log	Sun Jul 19 12:02:12 2026
+***************
+*** 1,5 ****
+! arg1 NOT equal arg2
+! arg2 equals arg5
+! arg3 NOT equal arg4
+! variable is undefined
+! arg4 is defined
+--- 1 ----
+! Nothing to be done for 'all'.

@@ -1,0 +1,5 @@
+second expansion of hello.o prereqs
+second expansion of hello.tsk prereqs
+hello.o
+hello.tsk from hello.o
+gmake: 'hello.tsk' is up to date.

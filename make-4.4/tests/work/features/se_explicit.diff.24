@@ -1,0 +1,13 @@
+*** work/features/se_explicit.base.24	Sun Jul 19 12:03:12 2026
+--- work/features/se_explicit.log.24	Sun Jul 19 12:03:12 2026
+***************
+*** 1,5 ****
+! second expansion of hello.tsk prereqs
+! second expansion of hello.o prereqs
+! hello.o
+! hello.tsk from hello.o
+! gmake: 'hello.tsk' is up to date.
+--- 1,3 ----
+! from
+! from
+! Nothing to be done for 'hello.tsk'.

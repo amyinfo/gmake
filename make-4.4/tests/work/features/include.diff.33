@@ -1,0 +1,8 @@
+*** work/features/include.base.33	Sun Jul 19 12:02:14 2026
+--- work/features/include.log.33	Sun Jul 19 12:02:14 2026
+***************
+*** 1,2 ****
+! exit 1
+! work/features/include.mk.31:4: Failed to remake makefile 'inc_b.mk'.
+--- 1 ----
+! hello

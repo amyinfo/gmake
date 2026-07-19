@@ -1,0 +1,7 @@
+
+.SECONDEXPANSION:
+proj1.exe : proj1.o $$(eval $$(test))
+define test
+proj1.o : proj1.c
+proj1.c: proj1.h
+endef

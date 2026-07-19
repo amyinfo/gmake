@@ -1,0 +1,4 @@
+
+hello.tsk:
+%.tsk: %.x; touch $@
+%.x: ; touch $@

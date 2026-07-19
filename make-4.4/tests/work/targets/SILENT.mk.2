@@ -1,0 +1,8 @@
+
+.PHONY: M r a b
+r: a b ; @$(MAKE) -f work/targets/SILENT.mk.2 M V=x
+a b: ; echo $@
+
+V =
+$V.SILENT:
+M: a b

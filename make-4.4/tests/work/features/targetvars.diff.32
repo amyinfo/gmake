@@ -1,0 +1,7 @@
+*** work/features/targetvars.base.32	Sun Jul 19 12:03:16 2026
+--- work/features/targetvars.log.32	Sun Jul 19 12:03:16 2026
+***************
+*** 1 ****
+! hello=sun
+--- 1 ----
+! hello=moon

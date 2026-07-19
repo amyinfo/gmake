@@ -1,0 +1,10 @@
+*** work/options/dash-f.base.28	Sun Jul 19 12:03:26 2026
+--- work/options/dash-f.log.28	Sun Jul 19 12:03:26 2026
+***************
+*** 1,4 ****
+! touch bye.mk.src
+! touch bye.mk
+! hello, world
+! gmake: 'all' is up to date.
+--- 1 ----
+! gmake: unknown option -- 'y'

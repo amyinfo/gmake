@@ -1,0 +1,19 @@
+
+foo: -lcat
+
+# Removing second expansion prevents segfault
+.SECONDEXPANSION:
+foo: $$@.o ;
+
+# Having an empty command here prevents segfault unless,
+# the environment is empty. `env -i make foo`
+# MFLAGS=-w or MAKEFLAGS=-w `env MFLAGS=-w make foo`
+# libcat.a target calls an extra command, `@true \n @touch $@`
+# odd.
+%.o: ; @true
+
+# Having an empty command prevents segfault.
+-l%: lib%.a ; @true
+
+# Not creating libcat.a here prevents segfault,
+libcat.a: ; @touch $@

@@ -1,0 +1,6 @@
+
+.RECIPEPREFIX = >
+all:
+>@echo hi
+>$(shell ./basdfdfsed there)
+>@echo $(.SHELLSTATUS)

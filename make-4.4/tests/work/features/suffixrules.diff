@@ -1,0 +1,7 @@
+*** work/features/suffixrules.base	Sun Jul 19 12:03:15 2026
+--- work/features/suffixrules.log	Sun Jul 19 12:03:15 2026
+***************
+*** 1 ****
+! gmake: *** No rule to make target 'foo.o', needed by 'all'.  Stop.
+--- 1 ----
+! No rule to make target 'foo.o', needed by 'all'

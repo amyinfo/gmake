@@ -1,0 +1,8 @@
+*** work/options/dash-r.base	Sun Jul 19 12:03:27 2026
+--- work/options/dash-r.log	Sun Jul 19 12:03:27 2026
+***************
+*** 1 ****
+! gmake: *** No rule to make target 'xxx.o'.  Stop.
+--- 1,2 ----
+! Nothing to be done for 'COMPILE.c=echo'.
+! Nothing to be done for 'xxx.o'.

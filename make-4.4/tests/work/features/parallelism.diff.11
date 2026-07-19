@@ -1,0 +1,10 @@
+*** work/features/parallelism.base.11	Sun Jul 19 12:02:59 2026
+--- work/features/parallelism.log.11	Sun Jul 19 12:02:59 2026
+***************
+*** 1,4 ****
+! touch fff1.mk
+! file TWO
+! wait TWO
+! file ONE
+--- 1 ----
+! wait TWO: timeout after 10 seconds

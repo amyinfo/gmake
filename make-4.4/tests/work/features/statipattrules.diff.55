@@ -1,0 +1,8 @@
+*** work/features/statipattrules.base.55	Sun Jul 19 12:03:15 2026
+--- work/features/statipattrules.log.55	Sun Jul 19 12:03:15 2026
+***************
+*** 1,2 ****
+! lib/bye.x from lib/.1
+! gmake: Nothing to be done for 'all'.
+--- 1 ----
+! No rule to make target '%bye.x:', needed by 'lib/bye.x'

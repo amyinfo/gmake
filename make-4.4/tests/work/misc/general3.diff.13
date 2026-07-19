@@ -1,0 +1,7 @@
+*** work/misc/general3.base.13	Sun Jul 19 12:03:24 2026
+--- work/misc/general3.log.13	Sun Jul 19 12:03:24 2026
+***************
+*** 1 ****
+! hi ho;ho foo bar
+--- 1 ----
+! sh: line 1: foo: command not found

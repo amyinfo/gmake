@@ -1,0 +1,7 @@
+
+all: pre
+p% : .WAIT p%1 .WAIT p%2 | .WAIT p%3; @echo '<=$< ^=$^ ?=$? +=$+ |=$|'
+pre1 pre2 pre3: ;
+
+# This is just here so we don't fail with older versions of make
+.WAIT:

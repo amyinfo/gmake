@@ -1,0 +1,6 @@
+
+%a %b : xyzzy ; $(OP)
+xyzzy: ;
+ifdef RUN
+OP = @echo no
+endif

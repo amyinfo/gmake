@@ -1,0 +1,5 @@
+
+.SECONDEXPANSION:
+all: lib/bye.x
+lib/%.x: $$(firstword %.1); $(info $@ from $^)
+.PHONY: bye.1

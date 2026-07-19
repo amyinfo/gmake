@@ -1,0 +1,3 @@
+
+MAKEFLAGS:=B  -l2.5
+all:; $(info makeflags='$(MAKEFLAGS)')

@@ -1,0 +1,17 @@
+*** work/variables/MAKEFLAGS.base.11	Sun Jul 19 12:04:20 2026
+--- work/variables/MAKEFLAGS.log.11	Sun Jul 19 12:04:20 2026
+***************
+*** 1 ****
+! /makeflags='Bd'/
+--- 1,11 ----
+! gmake: Reading makefiles...
+! Reading makefile 'work/variables/MAKEFLAGS.mk.11'...
+! Considering target file 'all'.
+! 
+! File 'all' does not exist.
+! 
+! Finished prerequisites of target file 'all'.
+! 
+! makeflags='B'
+! Successfully remade target file 'all'.
+! 

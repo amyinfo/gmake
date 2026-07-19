@@ -1,0 +1,7 @@
+*** work/features/exec.base.12	Sun Jul 19 12:02:13 2026
+--- work/features/exec.log.12	Sun Jul 19 12:02:13 2026
+***************
+*** 1 ****
+! hello, world
+--- 1 ----
+! Nothing to be done for 'ANSWER=hello, world'.

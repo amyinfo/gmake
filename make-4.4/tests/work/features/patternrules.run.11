@@ -1,0 +1,2 @@
+# /home/kyra/workplace/go/make/make-4.4/tests/scripts/features/patternrules:214:
+/home/kyra/workplace/go/make/gmake -f work/features/patternrules.mk.11 -j2

@@ -1,0 +1,6 @@
+
+.SECONDEXPANSION:
+all: hello.tsk hello.q
+hello.tsk: hello.o $$(info second expansion of $$@ prereqs); $(info $@ from $^)
+hello.o: $$(info second expansion of $$@ prereqs); $(info $@)
+hello.q: hello.tsk $$(info second expansion of $$@ prereqs); $(info $@ from $^)

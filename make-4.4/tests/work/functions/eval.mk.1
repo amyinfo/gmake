@@ -1,0 +1,7 @@
+VARS = A B
+
+VARSET = $(1) = $(2)
+
+$(foreach v,$(VARS),$(eval $(call VARSET,$v,$v)))
+
+all: ; @echo A = $(A) B = $(B)

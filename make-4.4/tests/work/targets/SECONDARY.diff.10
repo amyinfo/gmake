@@ -1,0 +1,11 @@
+*** work/targets/SECONDARY.base.10	Sun Jul 19 12:03:30 2026
+--- work/targets/SECONDARY.log.10	Sun Jul 19 12:03:30 2026
+***************
+*** 1,5 ****
+! touch test.1
+! touch test.2
+! touch test.int
+! touch test.4
+! rm test.int
+--- 1 ----
+! No rule to make target 'test.4', needed by 'test'

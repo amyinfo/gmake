@@ -1,0 +1,13 @@
+
+all: ; @$(MAKE) -f work/features/parallelism.mk.12 recurse
+
+recurse: one two ; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl out $@
+one: ;@ /usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl wait TWO file ONE
+two: ;@ /usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl file TWO
+
+mkinclude: ; touch fff1.mk
+
+ifeq ($(MAKECMDGOALS),recurse)
+include fff1.mk
+fff1.mk: ; @$(MAKE) -f work/features/parallelism.mk.12 mkinclude
+endif

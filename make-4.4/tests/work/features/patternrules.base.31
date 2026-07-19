@@ -1,0 +1,2 @@
+touch gta
+work/features/patternrules.mk.31:2: warning: pattern recipe did not update peer target 'gtb'.

@@ -1,0 +1,8 @@
+*** work/features/exec.base.11	Sun Jul 19 12:02:13 2026
+--- work/features/exec.log.11	Sun Jul 19 12:02:13 2026
+***************
+*** 1 ****
+! hello, world
+--- 1,2 ----
+! Nothing to be done for 'SHELL=/bin/bash'.
+! Nothing to be done for 'CMD=./exec.cmd.11'.

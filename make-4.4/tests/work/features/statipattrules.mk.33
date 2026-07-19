@@ -1,0 +1,5 @@
+
+
+.PHONY: bye1%2% bye 3bye4%5 6bye bye7%8 bye9 bye10% 11bye12 13
+all: lib/bye.x
+lib/bye.x: lib/%.x: $(wordlist 1, 99, %1%2% % 3%4%5 6%) %7%8 %9 $(wordlist 1, 99, %10% 11%12) 13; $(info $@ from $^)

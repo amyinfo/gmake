@@ -1,0 +1,3 @@
+hello.c
+hello.f
+No rule to make target 'hello.tsk', needed by 'all'

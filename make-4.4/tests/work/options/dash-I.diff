@@ -1,0 +1,8 @@
+*** work/options/dash-I.base	Sun Jul 19 12:03:25 2026
+--- work/options/dash-I.log	Sun Jul 19 12:03:25 2026
+***************
+*** 1,2 ****
+! work/options/dash-I.mk:5: ifile.mk: No such file or directory
+! gmake: *** No rule to make target 'ifile.mk'.  Stop.
+--- 1 ----
+! There should be no errors for this makefile

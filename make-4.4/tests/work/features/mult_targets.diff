@@ -1,0 +1,7 @@
+*** work/features/mult_targets.base	Sun Jul 19 12:02:14 2026
+--- work/features/mult_targets.log	Sun Jul 19 12:02:14 2026
+***************
+*** 1 ****
+! I am big
+--- 1 ----
+! No rule to make target 'test.h', needed by 'bigoutput'

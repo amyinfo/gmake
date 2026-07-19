@@ -1,0 +1,8 @@
+*** work/features/patternrules.base.29	Sun Jul 19 12:03:10 2026
+--- work/features/patternrules.log.29	Sun Jul 19 12:03:10 2026
+***************
+*** 1,2 ****
+! : hello.x
+! touch hello.tsk
+--- 1 ----
+! Nothing to be done for 'hello.tsk'.

@@ -1,0 +1,3 @@
+work/variables/MAKEFLAGS.mk.27:2: update target 'all' due to: target does not exist
+echo /erR --trace --no-print-directory -- FOO=bar/
+/erR --trace --no-print-directory -- FOO=bar/

@@ -1,0 +1,4 @@
+gmake: *** extraneous `else'.
+gmake: *** extraneous `else'.
+Nothing to be done for 'midexport=export'.
+Nothing to be done for 'baseexport=unexport'.

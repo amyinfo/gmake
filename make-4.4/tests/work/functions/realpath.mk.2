@@ -1,0 +1,15 @@
+
+ifneq ($(realpath ///),/)
+  $(warning $(realpath ///) != /)
+endif
+
+ifneq ($(realpath ///.),/)
+  $(warning $(realpath ///.) != /)
+endif
+
+ifneq ($(realpath ///..),/)
+  $(warning $(realpath ///..) != /)
+endif
+
+.PHONY: all
+all: ; @:

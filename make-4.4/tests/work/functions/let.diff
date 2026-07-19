@@ -1,0 +1,7 @@
+*** work/functions/let.base	Sun Jul 19 12:03:20 2026
+--- work/functions/let.log	Sun Jul 19 12:03:20 2026
+***************
+*** 1 ****
+! a=,bad, b=,news, x=,1 2, y=,1 2, z=,1 ,
+--- 1 ----
+! a=,bad, b=,news, x=,, y=,, z=,,

@@ -1,0 +1,7 @@
+*** work/variables/INCLUDE_DIRS.base	Sun Jul 19 12:04:19 2026
+--- work/variables/INCLUDE_DIRS.log	Sun Jul 19 12:04:19 2026
+***************
+*** 0 ****
+--- 1,2 ----
++ .INCLUDE_DIRS is empty
++ *** No targets specified and no makefile found.

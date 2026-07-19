@@ -1,0 +1,12 @@
+FOO = foo
+
+all:: ; @echo it
+
+define Y
+  all:: ; @echo worked
+endef
+
+ifdef BAR
+$(eval $(Y))
+endif
+

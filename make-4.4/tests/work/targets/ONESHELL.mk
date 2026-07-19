@@ -1,0 +1,5 @@
+
+.ONESHELL:
+all:
+	a=$$$$
+	[ 0"$$a" -eq "$$$$" ] || echo fail

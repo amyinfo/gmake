@@ -1,0 +1,6 @@
+*** work/targets/POSIX.base	Sun Jul 19 12:03:29 2026
+--- work/targets/POSIX.log	Sun Jul 19 12:03:29 2026
+***************
+*** 1 ****
+- gmake: *** [work/targets/POSIX.mk:3: all] Error 1
+--- 0 ----

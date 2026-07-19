@@ -1,0 +1,4 @@
+
+.PHONY: the%weird\\_hello_pattern%\\.1 the%weird\\_hello_pattern%\\.2
+all: the%weird\\_hello_pattern\\.x
+the\%weird\\_hello_pattern\\.x: the\%weird\\_%_pattern\\.x: $(wordlist 1, 99, the\%weird\\_%_pattern%\\.1 the\%weird\\_%_pattern%\\.2); $(info $@ from $^)

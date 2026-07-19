@@ -1,0 +1,6 @@
+
+all: foo.o ; @echo $@
+%.o : %.c ; @echo cc -c -o $@ $<
+foo.o : foo.c foo.h bar.h baz.h
+%.h: ; @echo $@
+%.c: ; @echo $@

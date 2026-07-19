@@ -1,0 +1,6 @@
+
+all: hello.tsk
+name:=test
+suf:=.z
+%.tsk: %.z $(name)$(suf) ; @echo $@
+%.z: %.x ; @echo $@

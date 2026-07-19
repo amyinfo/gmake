@@ -1,0 +1,4 @@
+
+%.c %.h : %.y; touch $*.c
+%.o: %.c; touch $@
+foo.y: ; touch $@

@@ -1,0 +1,7 @@
+*** work/features/se_explicit.base.29	Sun Jul 19 12:03:12 2026
+--- work/features/se_explicit.log.29	Sun Jul 19 12:03:12 2026
+***************
+*** 1,2 ****
+  exit 1
+- gmake: *** [work/features/se_explicit.mk.28:3: hello.tsk] Error 1
+--- 1 ----

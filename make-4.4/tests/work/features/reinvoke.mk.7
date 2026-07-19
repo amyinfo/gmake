@@ -1,0 +1,4 @@
+
+hello.o: hello.d; $(info RESTARTS=$(MAKE_RESTARTS))
+hello.d: hello.td
+include hello.d

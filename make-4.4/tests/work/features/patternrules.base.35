@@ -1,0 +1,5 @@
+touch foo.y
+touch foo.c
+work/features/patternrules.mk.34:2: warning: pattern recipe did not update peer target 'foo.h'.
+touch foo.o
+rm foo.c

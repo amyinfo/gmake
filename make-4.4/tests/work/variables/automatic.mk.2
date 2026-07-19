@@ -1,0 +1,9 @@
+
+.SECONDEXPANSION:
+.SUFFIXES: .b .src
+
+p:=mbr.src
+mbr.b: $$p
+	@echo $*
+
+mbr.src: ; @:

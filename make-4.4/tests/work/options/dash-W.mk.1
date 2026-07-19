@@ -1,0 +1,8 @@
+
+all: baz.x ; @:
+include foo.x
+foo.x: bar.x
+	@echo "\$$(info restarts=\$$(MAKE_RESTARTS))" > $@
+	@echo "touch $@"
+bar.x: ; echo >> $@
+baz.x: bar.x ; @echo "touch $@"

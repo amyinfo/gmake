@@ -1,0 +1,4 @@
+
+all: hello.tsk
+%.tsk: %.z ; @echo $@
+%.z : %.x ; @echo $@

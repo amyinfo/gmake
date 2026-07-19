@@ -1,0 +1,5 @@
+
+.SECONDEXPANSION:
+all: lib/bye.x
+%.x: $$(wordlist 1, 99, %1%2% % 3%4%5 6%) %7%8 %9 $$(wordlist 1, 99, %10% 11%12) 13; $(info $@ from $^)
+.PHONY: lib/bye1%2% lib/bye lib/3bye4%5 lib/6bye lib/bye7%8 lib/bye9 lib/bye10% lib/11bye12 13
