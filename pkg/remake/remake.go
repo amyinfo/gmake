@@ -475,7 +475,6 @@ func updateFile1(f *types.File, depth uint) types.UpdateStatus {
 
 	if running {
 		file.SetCommandState(f, types.CmdDepsRunning)
-		depth--
 		debug.DBF(debug.Verbose, "The prerequisites of '%s' are being made.\n", f.Name)
 		return types.UpdateSuccess
 	}
@@ -506,8 +505,6 @@ func updateFile1(f *types.File, depth uint) types.UpdateStatus {
 		}
 		d.Changed = d.Changed || noexist || dMtime > uint64(thisMtime)
 	}
-
-	depth--
 
 	if f.DoubleColon != nil && f.Deps == nil {
 		mustMake = true

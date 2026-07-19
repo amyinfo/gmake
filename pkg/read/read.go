@@ -662,8 +662,6 @@ func splitQuoteArgs(s string) []string {
 				args = append(args, s[i+1:i+1+end])
 				i = i + end + 1
 			}
-		} else if s[i] == ',' {
-			// Separator
 		}
 	}
 	return args
@@ -844,9 +842,6 @@ func recordFiles(targets []string, depstr, pattern string, twoColon bool, comman
 
 		if lastTarget == nil {
 			lastTarget = targetFile
-		}
-
-		if len(targets) > 1 && tname != targets[0] {
 		}
 
 		// Set dependencies (first target only to avoid duplication)

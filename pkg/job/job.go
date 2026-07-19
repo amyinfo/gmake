@@ -197,7 +197,7 @@ func processChild(c *types.Child, exitCode, exitSig, forceExitCode, coredump int
 	if forceExitCode != 0 {
 		exitCode = forceExitCode
 	}
-	childFailed := config.MakeSuccess
+	var childFailed int
 	if exitSig == 0 && exitCode == 0 {
 		childFailed = config.MakeSuccess
 	} else if exitSig == 0 && exitCode == 1 && config.QuestionFlag && c.Recursive {
@@ -456,7 +456,7 @@ func childExecuteJob(child *types.Child, argv []string) {
 	}
 	child.Pid = cmd.Process.Pid
 	go func(c *types.Child) {
-		c.Cmd.Wait()
+		_ = c.Cmd.Wait()
 		childrenMu.Lock()
 		deadChildren++
 		childrenMu.Unlock()
