@@ -97,29 +97,21 @@ func ChopCommands(cmds *types.Commands) {
 	for i, line := range lines {
 		flags := byte(0)
 		trimmed := line
-		for {
-			if trimmed == "" {
+		for trimmed != "" {
+			ch := trimmed[0]
+			if ch != '+' && ch != '@' && ch != '-' && ch != ' ' && ch != '\t' {
 				break
 			}
-			ch := trimmed[0]
 			switch ch {
 			case '+':
 				flags |= CommandsRecur
-				trimmed = trimmed[1:]
 			case '@':
 				flags |= CommandsSilent
-				trimmed = trimmed[1:]
 			case '-':
 				flags |= CommandsNoError
-				trimmed = trimmed[1:]
 			case ' ', '\t':
-				trimmed = trimmed[1:]
-			default:
-				break
 			}
-			if ch != ' ' && ch != '\t' && ch != '+' && ch != '@' && ch != '-' {
-				break
-			}
+			trimmed = trimmed[1:]
 		}
 
 		if flags&CommandsRecur == 0 {
@@ -217,8 +209,8 @@ func ExecuteFileCommands(f *types.File) int {
 		showCmd := flags&CommandsSilent == 0
 
 		if showCmd && expanded != "" {
-			os.Stdout.WriteString(expanded)
-			os.Stdout.WriteString("\n")
+			_, _ = os.Stdout.WriteString(expanded)
+			_, _ = os.Stdout.WriteString("\n")
 		}
 
 		cmd := exec.Command("sh", "-c", expanded)
