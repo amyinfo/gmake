@@ -47,19 +47,6 @@ var includeDirectories []string
 // maxIncludeLength tracks the max length of include directory paths.
 var maxInclLen int
 
-const (
-	wordBogus int = iota
-	wordEol
-	wordStatic
-	wordVariable
-	wordColon
-	wordDcolon
-	wordSemicolon
-	wordVarassign
-	wordAmpcolon
-	wordAmpdcolon
-)
-
 // ReadAllMakefiles reads all the makefiles and returns targets to rebuild.
 func ReadAllMakefiles(makefiles []string) []*types.Goaldep {
 	numMakefiles := 0
@@ -196,8 +183,8 @@ func evalMakefile(filename string, flags int) *types.Goaldep {
 	if fileEnt == nil {
 		fileEnt = file.EnterFile(filename)
 	}
-	filename = fileEnt.Name
 	if fileEnt != nil {
+		filename = fileEnt.Name
 		deps.File = fileEnt
 	}
 	deps.Flags = byte(flags)
@@ -736,7 +723,6 @@ func parseAssignment(line string) (string, string, types.VariableFlavor) {
 				case "!=":
 					flavor = types.FlavorShell
 				}
-				break
 			}
 		}
 		if eqIdx >= 0 {
