@@ -557,8 +557,8 @@ func fnInfo(args []string) string {
 	if len(args) == 0 {
 		return ""
 	}
-	os.Stdout.WriteString(args[0])
-	os.Stdout.WriteString("\n")
+	_, _ = os.Stdout.WriteString(args[0])
+	_, _ = os.Stdout.WriteString("\n")
 	return ""
 }
 
@@ -570,7 +570,7 @@ func fnWarning(args []string) string {
 	if read.ReadingFile != nil {
 		prefix = fmt.Sprintf("%s:%d: ", read.ReadingFile.Filenm, read.ReadingFile.Lineno)
 	}
-	os.Stderr.WriteString(prefix + args[0] + "\n")
+	_, _ = os.Stderr.WriteString(prefix + args[0] + "\n")
 	return ""
 }
 
@@ -582,8 +582,8 @@ func fnError(args []string) string {
 	if read.ReadingFile != nil {
 		prefix = fmt.Sprintf("%s:%d: ", read.ReadingFile.Filenm, read.ReadingFile.Lineno)
 	}
-	os.Stderr.WriteString(prefix + args[0] + "\n")
-	os.Stderr.WriteString(config.Program + ": *** Stop.\n")
+	_, _ = os.Stderr.WriteString(prefix + args[0] + "\n")
+	_, _ = os.Stderr.WriteString(config.Program + ": *** Stop.\n")
 	os.Exit(2)
 	return ""
 }
@@ -656,12 +656,12 @@ func fnFile(args []string) string {
 	}
 	switch mode {
 	case ">":
-		os.WriteFile(fn, []byte(text), 0666)
+		_ = os.WriteFile(fn, []byte(text), 0666)
 	case ">>":
 		f, err := os.OpenFile(fn, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
 		if err == nil {
-			defer f.Close()
-			f.WriteString(text)
+			defer f.Close() //nolint:errcheck
+			_, _ = f.WriteString(text)
 		}
 	}
 	return ""
