@@ -4,10 +4,8 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"os/signal"
 	"strings"
 	"sync"
-	"syscall"
 	"time"
 
 	"github.com/amyinfo/gmake/pkg/commands"
@@ -17,6 +15,7 @@ import (
 	"github.com/amyinfo/gmake/pkg/file"
 	"github.com/amyinfo/gmake/pkg/output"
 	"github.com/amyinfo/gmake/pkg/shuffle"
+	"github.com/amyinfo/gmake/pkg/signame"
 	"github.com/amyinfo/gmake/pkg/types"
 )
 
@@ -99,26 +98,10 @@ func ChildError(child *types.Child, exitCode, exitSig, coredump int, ignored boo
 	if exitSig == 0 {
 		fmt.Fprintf(os.Stderr, "%s[%s: %s] Error %d%s%s\n", pre, nm, f.Name, exitCode, post, shuffleExtra)
 	} else {
-		s := os.Signal(syscall.Signal(exitSig)).String()
+		s := signame.SignalName(exitSig)
 		fmt.Fprintf(os.Stderr, "%s[%s: %s] %s%s%s%s\n", pre, nm, f.Name, s, dump, post, shuffleExtra)
 	}
 	output.OutputUnset()
-}
-
-func setupChildHandler() {
-	go func() {
-		c := make(chan os.Signal, 1)
-		signal.Notify(c, syscall.SIGCHLD)
-		for range c {
-			childrenMu.Lock()
-			deadChildren++
-			childrenMu.Unlock()
-			select {
-			case childExited <- struct{}{}:
-			default:
-			}
-		}
-	}()
 }
 
 func ReapChildren(block int, err int) {
@@ -185,16 +168,7 @@ func ReapChildren(block int, err int) {
 			if c.Cmd != nil && c.Cmd.ProcessState != nil && !c.Processed {
 				ws := c.Cmd.ProcessState
 				exitCode := ws.ExitCode()
-				exitSig := 0
-				coredump := 0
-				if status, ok := ws.Sys().(syscall.WaitStatus); ok {
-					if status.Signaled() {
-						exitSig = int(status.Signal())
-					}
-					if status.CoreDump() {
-						coredump = 1
-					}
-				}
+				exitSig, coredump := getExitSignalInfo(ws)
 				config.CommandCount++
 				c.Processed = true
 				next := c.Next
