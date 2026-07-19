@@ -40,10 +40,8 @@ import (
 	"github.com/amyinfo/gmake/pkg/variable"
 )
 
-var (
-	// Makefile search order
-	makefiles = []string{"GNUmakefile", "makefile", "Makefile"}
-)
+
+
 
 func main() {
 	goos.Exit(realMain())
@@ -444,7 +442,7 @@ func buildGoalChain(targets []string) *types.Goaldep {
 			head = g
 			tail = g
 		} else {
-			tail.Dep.Next = &g.Dep
+			tail.Next = &g.Dep
 			tail = g
 		}
 	}
