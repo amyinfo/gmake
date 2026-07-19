@@ -64,20 +64,20 @@ func rehashFile(f *types.File, name string) {
 func checkRenamed(*types.File) {}
 
 func msg(format string, args ...interface{}) {
-	fmt.Fprintf(os.Stdout, format+"\n", args...)
+	_, _ = fmt.Fprintf(os.Stdout, format+"\n", args...)
 }
 
 func errorMsg(format string, args ...interface{}) {
-	fmt.Fprintf(os.Stderr, format+"\n", args...)
+	_, _ = fmt.Fprintf(os.Stderr, format+"\n", args...)
 }
 
 func fatalMsg(format string, args ...interface{}) {
-	fmt.Fprintf(os.Stderr, format+"\n", args...)
+	_, _ = fmt.Fprintf(os.Stderr, format+"\n", args...)
 	os.Exit(2)
 }
 
 func perrorWithName(call, name string) {
-	fmt.Fprintf(os.Stderr, "%s%s\n", call, name)
+	_, _ = fmt.Fprintf(os.Stderr, "%s%s\n", call, name)
 }
 
 func checkAlsoMake(f *types.File) {
@@ -750,18 +750,18 @@ func touchFile(f *types.File) types.UpdateStatus {
 	}
 	if _, err := fd.Write(buf); err != nil {
 		perrorWithName("touch: write: ", f.Name)
-		fd.Close()
+		_ = fd.Close()
 		return types.UpdateFailed
 	}
 	if statbuf.Size() == 0 {
-		fd.Close()
+		_ = fd.Close()
 		fd, err = os.OpenFile(f.Name, os.O_RDWR|os.O_TRUNC, 0666)
 		if err != nil {
 			perrorWithName("touch: open: ", f.Name)
 			return types.UpdateFailed
 		}
 	}
-	fd.Close()
+	_ = fd.Close()
 	return types.UpdateSuccess
 }
 
