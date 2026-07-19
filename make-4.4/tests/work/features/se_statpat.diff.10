@@ -1,8 +1,0 @@
-*** work/features/se_statpat.base.10	Sun Jul 19 12:03:13 2026
---- work/features/se_statpat.log.10	Sun Jul 19 12:03:13 2026
-***************
-*** 1,2 ****
-! exit 1
-! gmake: *** [work/features/se_statpat.mk.10:4: hello.tsk] Error 1
---- 1 ----
-! No rule to make target '%.tsk:', needed by 'hello.tsk'

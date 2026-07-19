@@ -1,2 +1,0 @@
-exit 1
-gmake: *** [work/features/se_statpat.mk.10:4: hello.tsk] Error 1

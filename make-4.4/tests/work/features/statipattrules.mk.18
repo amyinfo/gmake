@@ -1,4 +1,0 @@
-
-
-all: bye.x
-bye.x: %.x: $(%); $(info $@ from $^)

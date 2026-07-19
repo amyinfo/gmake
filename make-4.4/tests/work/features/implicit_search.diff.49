@@ -1,12 +1,10 @@
-*** work/features/implicit_search.base.49	Sun Jul 19 12:02:13 2026
---- work/features/implicit_search.log.49	Sun Jul 19 12:02:13 2026
+*** work/features/implicit_search.base.49	Sun Jul 19 12:32:16 2026
+--- work/features/implicit_search.log.49	Sun Jul 19 12:32:16 2026
 ***************
 *** 1,4 ****
 ! gmake: Circular hello.o <- hello.tsk dependency dropped.
-  hello.f
+! hello.f
 ! hello.tsk
 ! gmake: Nothing to be done for 'all'.
---- 1,3 ----
-! hello.c
-  hello.f
+--- 1 ----
 ! No rule to make target 'hello.tsk', needed by 'all'

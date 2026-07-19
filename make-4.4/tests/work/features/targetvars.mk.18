@@ -1,4 +1,0 @@
-
-all:; @echo hello=$$hello
-unexport hello=sun
-dummy: hello?=world

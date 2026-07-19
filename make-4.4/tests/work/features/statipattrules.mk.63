@@ -1,4 +1,0 @@
-
-.SECONDEXPANSION:
-all: lib/bye.x
-lib/bye.x: lib/%.x: $$(%); $(info $@ from $^)

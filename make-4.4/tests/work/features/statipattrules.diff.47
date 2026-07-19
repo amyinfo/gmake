@@ -1,8 +1,0 @@
-*** work/features/statipattrules.base.47	Sun Jul 19 12:03:14 2026
---- work/features/statipattrules.log.47	Sun Jul 19 12:03:14 2026
-***************
-*** 1,2 ****
-! bye.x from 
-! gmake: Nothing to be done for 'all'.
---- 1 ----
-! No rule to make target '%.x:', needed by 'bye.x'

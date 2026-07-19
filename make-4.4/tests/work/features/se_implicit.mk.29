@@ -1,7 +1,0 @@
-
-deps:=hello.h
-.SECONDEXPANSION:
-all: hello.tsk
-%.tsk: %.x; $(info $@)
-%.x: $$(deps); $(info $@)
-hello.h:; $(info $@)

@@ -1,2 +1,0 @@
-
-all:; $(info hello world)

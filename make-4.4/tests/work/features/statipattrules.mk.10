@@ -1,5 +1,0 @@
-
-
-.PHONY: bye.1
-all: bye.x
-bye.x: %.x: $(firstword %.1); $(info $@ from $^)

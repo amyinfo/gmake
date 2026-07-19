@@ -1,6 +1,0 @@
-*** work/misc/close_stdout.base	Sun Jul 19 12:03:24 2026
---- work/misc/close_stdout.log	Sun Jul 19 12:03:24 2026
-***************
-*** 1 ****
-- /^gmake: write error/
---- 0 ----

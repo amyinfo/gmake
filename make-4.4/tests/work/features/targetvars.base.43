@@ -1,3 +1,0 @@
-base make=base shell=base
-mid make=mid shell=mid
-all make= shell=

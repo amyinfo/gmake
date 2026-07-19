@@ -1,8 +1,0 @@
-*** work/features/se_explicit.base.16	Sun Jul 19 12:03:12 2026
---- work/features/se_explicit.log.16	Sun Jul 19 12:03:12 2026
-***************
-*** 1,2 ****
-! @=2.x,<=,^=,+=,|=,?=,*=,%=
-! gmake: Nothing to be done for 'all'.
---- 1 ----
-! No rule to make target '2.x', needed by 'all'

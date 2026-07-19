@@ -1,7 +1,0 @@
-*** work/variables/LIBPATTERNS.base	Sun Jul 19 12:04:19 2026
---- work/variables/LIBPATTERNS.log	Sun Jul 19 12:04:19 2026
-***************
-*** 1 ****
-! build all from mtest_foo.a
---- 1 ----
-! No rule to make target '-lfoo', needed by 'all'

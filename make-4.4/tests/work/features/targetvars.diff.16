@@ -1,8 +1,0 @@
-*** work/features/targetvars.base.16	Sun Jul 19 12:03:15 2026
---- work/features/targetvars.log.16	Sun Jul 19 12:03:15 2026
-***************
-*** 1,2 ****
-! ok ok foo pat
-! ok ok foo pat
---- 1 ----
-! No rule to make target 'W', needed by 'foo'

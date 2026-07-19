@@ -1,9 +1,0 @@
-*** work/features/patternrules.base.20	Sun Jul 19 12:03:10 2026
---- work/features/patternrules.log.20	Sun Jul 19 12:03:10 2026
-***************
-*** 1,3 ****
-! test.z
-! hello.z
-! hello.tsk
---- 1 ----
-! No rule to make target 'hello.tsk', needed by 'all'

@@ -1,7 +1,0 @@
-*** work/features/parallelism.base.10	Sun Jul 19 12:02:48 2026
---- work/features/parallelism.log.10	Sun Jul 19 12:02:48 2026
-***************
-*** 1 ****
-! touch file3
---- 1 ----
-! No rule to make target 'file1', needed by 'file2'

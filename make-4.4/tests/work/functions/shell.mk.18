@@ -1,5 +1,0 @@
-
-export PATH = $(shell echo "tests:$$PATH")
-foo = $(shell echo yes)
-
-all:;echo $(foo)

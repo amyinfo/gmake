@@ -1,3 +1,0 @@
-exit 1 > all
-gmake: *** [work/targets/DELETE_ON_ERROR.mk:3: all] Error 1
-gmake: *** Deleting file 'all'

@@ -1,4 +1,0 @@
-
-
-all: lib/bye.x
-lib/bye.x: %.x: $(%); $(info $@ from $^)

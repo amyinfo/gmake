@@ -1,4 +1,0 @@
-
-.WAIT: foo
-.WAIT: ; echo oops
-all:;@:

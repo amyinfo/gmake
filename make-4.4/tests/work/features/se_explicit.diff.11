@@ -1,8 +1,0 @@
-*** work/features/se_explicit.base.11	Sun Jul 19 12:03:12 2026
---- work/features/se_explicit.log.11	Sun Jul 19 12:03:12 2026
-***************
-*** 1,2 ****
-! baz
-! gmake: Nothing to be done for 'biz'.
---- 1 ----
-! Nothing to be done for 'biz'.

@@ -1,7 +1,0 @@
-*** work/functions/error.base	Sun Jul 19 12:03:18 2026
---- work/functions/error.log	Sun Jul 19 12:03:18 2026
-***************
-*** 1 ****
-! work/functions/error.mk:4: *** error is yes.  Stop.
---- 1 ----
-! Nothing to be done for 'ERROR1=yes'.

@@ -1,5 +1,0 @@
-
-.SECONDEXPANSION:
-all: $$(var)
-%_: ; @echo $@
-var = a_ b_ c_

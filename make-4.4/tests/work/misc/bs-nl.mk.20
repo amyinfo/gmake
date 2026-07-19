@@ -1,5 +1,0 @@
-include work/misc/bs-nl.mk.19
-define BAR
-all: ; @echo $(FOO) bar
-endef
-$(eval $(BAR))

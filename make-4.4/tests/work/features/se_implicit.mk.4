@@ -1,8 +1,0 @@
-
-.SECONDEXPANSION:
-$(dir)/tmp/foo.o: $(dir)/tmp/foo.c
-$(dir)/tmp/foo.c: ; @echo '$@'
-bar.h: ; @echo '$@'
-
-%.o: %.c|bar.h ; @echo '$@: {$<} {$|} $^'
-

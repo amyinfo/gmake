@@ -1,7 +1,0 @@
-*** work/options/dash-f.base.23	Sun Jul 19 12:03:26 2026
---- work/options/dash-f.log.23	Sun Jul 19 12:03:26 2026
-***************
-*** 1 ****
-! /requires an argument/
---- 1 ----
-! gmake: unknown option '--makefile'

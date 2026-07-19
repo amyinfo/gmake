@@ -1,7 +1,0 @@
-*** work/features/targetvars.base.21	Sun Jul 19 12:03:16 2026
---- work/features/targetvars.log.21	Sun Jul 19 12:03:16 2026
-***************
-*** 1 ****
-! C f1
---- 1 ----
-! Nothing to be done for 'FOO=C'.

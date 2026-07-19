@@ -1,5 +1,0 @@
-
-.SECONDEXPANSION:
-bye:=bye.c
-all: hello.o
-.DEFAULT: $$(info second expansion of prereqs of default recipe @ = $$@) ; $(info default recipe $@)

@@ -1,3 +1,0 @@
-base make=base shell=base
-mid make=mid shell=
-all make=environ shell=environ

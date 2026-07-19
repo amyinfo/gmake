@@ -1,9 +1,0 @@
-*** work/variables/undefine.base	Sun Jul 19 12:04:21 2026
---- work/variables/undefine.log	Sun Jul 19 12:04:21 2026
-***************
-*** 1,2 ****
-! recursive simple recursive
-! undefined undefined undefined
---- 1,2 ----
-! recursive simple undefined
-! recursive simple undefined

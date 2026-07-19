@@ -1,7 +1,0 @@
-*** work/functions/shell.base.17	Sun Jul 19 12:03:22 2026
---- work/functions/shell.log.17	Sun Jul 19 12:03:22 2026
-***************
-*** 1 ****
-! 127: /bin/sh: line 1: bad-command: command not found
---- 1 ----
-! : 

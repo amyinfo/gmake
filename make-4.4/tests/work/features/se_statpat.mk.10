@@ -1,6 +1,0 @@
-
-.SECONDEXPANSION:
-all: hello.tsk
-hello.tsk: %.tsk: %.o; exit 1
-hello.o:;
-bye.tsk: %.tsk: $$(shell touch hello.1);

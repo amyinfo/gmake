@@ -1,2 +1,0 @@
-# /home/kyra/workplace/go/make/make-4.4/tests/scripts/features/targetvars:420:
-/home/kyra/workplace/go/make/gmake -f work/features/targetvars.mk.20 midexport=unexport baseexport=export

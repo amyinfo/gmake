@@ -1,7 +1,0 @@
-*** work/features/targetvars.base.19	Sun Jul 19 12:03:15 2026
---- work/features/targetvars.log.19	Sun Jul 19 12:03:15 2026
-***************
-*** 1 ****
-! $FOO BAR
---- 1 ----
-! $FOO

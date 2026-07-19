@@ -1,7 +1,0 @@
-*** work/features/targetvars.base.13	Sun Jul 19 12:03:15 2026
---- work/features/targetvars.log.13	Sun Jul 19 12:03:15 2026
-***************
-*** 1 ****
-! bar snafu bar
---- 1 ----
-! foo

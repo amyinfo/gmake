@@ -1,9 +1,0 @@
-*** work/features/patternrules.base.34	Sun Jul 19 12:03:10 2026
---- work/features/patternrules.log.34	Sun Jul 19 12:03:10 2026
-***************
-*** 1,3 ****
-! touch gta
-! work/features/patternrules.mk.33:4: warning: pattern recipe did not update peer target 'gtb'.
-! gmake: 'all' is up to date.
---- 1 ----
-! Nothing to be done for 'all'.

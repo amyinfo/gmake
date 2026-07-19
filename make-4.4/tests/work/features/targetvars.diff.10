@@ -1,9 +1,0 @@
-*** work/features/targetvars.base.10	Sun Jul 19 12:03:15 2026
---- work/features/targetvars.log.10	Sun Jul 19 12:03:15 2026
-***************
-*** 1,2 ****
-! bar baz biz boz
-! bar baz
---- 1,2 ----
-! bar
-! bar

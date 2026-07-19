@@ -1,7 +1,0 @@
-*** work/options/dash-d.base	Sun Jul 19 12:03:26 2026
---- work/options/dash-d.log	Sun Jul 19 12:03:26 2026
-***************
-*** 1 ****
-! /GNU Make/
---- 1 ----
-! gmake: unknown option '--trace'

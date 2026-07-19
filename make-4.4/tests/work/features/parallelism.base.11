@@ -1,4 +1,0 @@
-touch fff1.mk
-file TWO
-wait TWO
-file ONE

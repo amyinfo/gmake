@@ -1,7 +1,0 @@
-
-things = thing1 thing2
-all: $(things)
-thing1:; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl wait thing2start file $@start wait thing2end out $@end
-thing2:; @/usr/bin/perl /home/kyra/workplace/go/make/make-4.4/tests/../tests/thelp.pl file $@start wait thing1start file $@end
--include inc.mk
-inc.mk: ; @touch $@

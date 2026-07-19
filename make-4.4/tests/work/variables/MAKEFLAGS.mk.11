@@ -1,3 +1,0 @@
-
-MAKEFLAGS:=B
-all:; $(info makeflags='$(MAKEFLAGS)')

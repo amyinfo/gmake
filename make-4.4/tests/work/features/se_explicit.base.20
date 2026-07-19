@@ -1,4 +1,0 @@
-hello.h
-hello.o
-hello.tsk from hello.h hello.o
-gmake: 'hello.tsk' is up to date.

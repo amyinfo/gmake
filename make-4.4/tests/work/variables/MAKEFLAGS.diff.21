@@ -1,7 +1,0 @@
-*** work/variables/MAKEFLAGS.base.21	Sun Jul 19 12:04:20 2026
---- work/variables/MAKEFLAGS.log.21	Sun Jul 19 12:04:20 2026
-***************
-*** 1 ****
-! /makeflags='B --debug=b'/
---- 1 ----
-! gmake: unknown option '--debug=b'

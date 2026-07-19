@@ -1,8 +1,0 @@
-
-all: ; @echo RESTARTS=$(MAKE_RESTARTS)
-
-m1.d: ; @echo $@; touch $@
-
-m2.d: m1.d ; @test -f $< || { echo $@; touch $@; }
-
-include m1.d m2.d

@@ -1,7 +1,0 @@
-
-$(file >file.out,A = foo)
-X1 := $(file <file.out)
-$(file >>file.out,B = bar)
-$(eval $(file <file.out))
-
-x:;@echo '$(X1)'; echo '$(A)'; echo '$(B)'

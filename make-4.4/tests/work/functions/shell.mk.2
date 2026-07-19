@@ -1,8 +1,0 @@
-.PHONY: all
-PRE := $(.SHELLSTATUS)
-$(shell exit 0)
-OK := $(.SHELLSTATUS)
-$(shell exit 1)
-BAD := $(.SHELLSTATUS)
-all: ; @echo PRE=$(PRE) OK=$(OK) BAD=$(BAD)
-              

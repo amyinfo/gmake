@@ -1,8 +1,0 @@
-*** work/functions/word.base.10	Sun Jul 19 12:03:23 2026
---- work/functions/word.log.10	Sun Jul 19 12:03:23 2026
-***************
-*** 1 ****
-! work/functions/word.mk.2:3: *** first argument to 'word' function must be greater than 0.  Stop.
---- 1,2 ----
-! 
-! Nothing to be done for 'x=0'.

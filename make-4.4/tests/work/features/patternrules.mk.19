@@ -1,4 +1,0 @@
-
-all: hello.tsk
-dep:=%.o
-%.tsk: $(dep) ; @echo $@

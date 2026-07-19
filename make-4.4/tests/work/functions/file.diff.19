@@ -1,7 +1,0 @@
-*** work/functions/file.base.19	Sun Jul 19 12:03:19 2026
---- work/functions/file.log.19	Sun Jul 19 12:03:19 2026
-***************
-*** 1 ****
-! work/functions/file.mk.19:1: *** file: missing filename.  Stop.
---- 1 ----
-! *** No targets specified and no makefile found.

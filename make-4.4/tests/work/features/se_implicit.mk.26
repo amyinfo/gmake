@@ -1,4 +1,0 @@
-
-.SECONDEXPANSION:
-all: bye.x
-%.x: $$(firstword %.1;

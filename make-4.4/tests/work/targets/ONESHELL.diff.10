@@ -1,7 +1,0 @@
-*** work/targets/ONESHELL.base.10	Sun Jul 19 12:03:29 2026
---- work/targets/ONESHELL.log.10	Sun Jul 19 12:03:29 2026
-***************
-*** 1 ****
-! it works: bar
---- 1 ----
-! sh: line 1: print: command not found

@@ -1,6 +1,0 @@
-*** work/features/patternrules.base	Sun Jul 19 12:03:10 2026
---- work/features/patternrules.log	Sun Jul 19 12:03:10 2026
-***************
-*** 0 ****
---- 1 ----
-+ No rule to make target 'case.1', needed by 'all'

@@ -1,3 +1,0 @@
-work/features/se_explicit.mk.9:16: Recipe was specified for file '-lcat' at work/features/se_explicit.mk.9:16,
-work/features/se_explicit.mk.9:16: but '-lcat' is now considered the same file as 'libcat.a'.
-work/features/se_explicit.mk.9:16: Recipe for '-lcat' will be ignored in favor of the one for 'libcat.a'.

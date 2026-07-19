@@ -1,4 +1,0 @@
-# hello<nl><nl>
-X1 := x$(file <file.out)y
-export X1
-x:;@echo "$$X1"

@@ -1,7 +1,7 @@
-*** work/features/order_only.base	Sun Jul 19 12:02:14 2026
---- work/features/order_only.log	Sun Jul 19 12:02:14 2026
+*** work/features/order_only.base	Sun Jul 19 12:32:18 2026
+--- work/features/order_only.log	Sun Jul 19 12:32:18 2026
 ***************
 *** 1 ****
 ! foo foo baz
 --- 1 ----
-! No rule to make target ';', needed by '%r'
+! Nothing to be done for '%r'.

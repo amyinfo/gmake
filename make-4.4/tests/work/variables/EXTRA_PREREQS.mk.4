@@ -1,7 +1,0 @@
-
-all: target.dst
-DEPENDENCY_ONLY_PREREQUISITES = ho hey
-target.dst: .EXTRA_PREREQS := hi ${DEPENDENCY_ONLY_PREREQUISITES}
-%.dst: %.src ; @echo ${.EXTRA_PREREQS} $^
-.PHONY: ${DEPENDENCY_ONLY_PREREQUISITES} target.src
-${DEPENDENCY_ONLY_PREREQUISITES} target.src: ; @echo $@

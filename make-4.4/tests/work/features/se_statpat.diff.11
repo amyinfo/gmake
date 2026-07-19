@@ -1,9 +1,0 @@
-*** work/features/se_statpat.base.11	Sun Jul 19 12:03:13 2026
---- work/features/se_statpat.log.11	Sun Jul 19 12:03:13 2026
-***************
-*** 1,3 ****
-! hello.h
-! hello.x
-! gmake: Nothing to be done for 'all'.
---- 1 ----
-! No rule to make target '%.x:', needed by 'hello.x'

@@ -1,8 +1,0 @@
-*** work/features/se_implicit.base.11	Sun Jul 19 12:03:12 2026
---- work/features/se_implicit.log.11	Sun Jul 19 12:03:12 2026
-***************
-*** 1,2 ****
-! bar
-! gmake: Nothing to be done for 'foo'.
---- 1 ----
-! Nothing to be done for 'foo'.

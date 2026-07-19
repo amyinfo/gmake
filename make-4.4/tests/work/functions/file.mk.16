@@ -1,3 +1,0 @@
-
-X1 := $(file <file.out,foo)
-x:;@echo '$(X1)';

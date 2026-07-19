@@ -1,7 +1,0 @@
-*** work/targets/NOTINTERMEDIATE.base.10	Sun Jul 19 12:03:29 2026
---- work/targets/NOTINTERMEDIATE.log.10	Sun Jul 19 12:03:29 2026
-***************
-*** 1 ****
-! touch hello.z
---- 1 ----
-! Nothing to be done for 'hello.z'.

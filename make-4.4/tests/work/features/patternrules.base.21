@@ -1,3 +1,0 @@
-touch a.1 a.15
-cat a.1 a.15 >a.4
-rm a.15 a.1

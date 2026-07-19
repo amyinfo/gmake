@@ -1,9 +1,0 @@
-.SUFFIXES:
-
-all: exe1 exe2; @echo making $@
-
-exe1 exe2: lib; @echo cp $^ $@
-
-lib: foo.o; @echo cp $^ $@
-
-foo.o: ; exit 1

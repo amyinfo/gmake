@@ -1,3 +1,0 @@
-
-MAKEFLAGS:=B  --debug=b
-all:; $(info makeflags='$(MAKEFLAGS)')

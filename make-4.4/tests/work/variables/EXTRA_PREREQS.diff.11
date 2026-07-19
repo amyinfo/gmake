@@ -1,9 +1,0 @@
-*** work/variables/EXTRA_PREREQS.base.11	Sun Jul 19 12:04:19 2026
---- work/variables/EXTRA_PREREQS.log.11	Sun Jul 19 12:04:19 2026
-***************
-*** 1,3 ****
-! tack
-! tick
-! tack tick
---- 1 ----
-! No rule to make target '.EXTRA_PREREQS', needed by 'all'

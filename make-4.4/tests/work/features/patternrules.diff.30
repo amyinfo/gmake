@@ -1,9 +1,0 @@
-*** work/features/patternrules.base.30	Sun Jul 19 12:03:10 2026
---- work/features/patternrules.log.30	Sun Jul 19 12:03:10 2026
-***************
-*** 1,3 ****
-! touch 1.r
-! touch 1.q
-! touch 1.all
---- 1 ----
-! No rule to make target '1.q', needed by '1.all'

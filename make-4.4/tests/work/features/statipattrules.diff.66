@@ -1,8 +1,0 @@
-*** work/features/statipattrules.base.66	Sun Jul 19 12:03:15 2026
---- work/features/statipattrules.log.66	Sun Jul 19 12:03:15 2026
-***************
-*** 1,2 ****
-! the%weird\\_hello_pattern\\.x from the%weird\\_hello_pattern%\\.1 the%weird\\_hello_pattern%\\.2
-! gmake: Nothing to be done for 'all'.
---- 1 ----
-! No rule to make target 'the%weird\\_hello_pattern\\.x', needed by 'all'

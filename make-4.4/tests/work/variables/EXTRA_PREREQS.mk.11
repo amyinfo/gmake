@@ -1,5 +1,0 @@
-
-.PHONY: all tick tack
-all: ; @echo ${.EXTRA_PREREQS} $^
-all: .EXTRA_PREREQS = *ck
-tick tack: ; @echo $@

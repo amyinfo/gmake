@@ -1,2 +1,0 @@
-exit 1
-gmake: *** [work/features/se_explicit.mk.28:3: hello.tsk] Error 1

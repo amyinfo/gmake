@@ -1,8 +1,0 @@
-*** work/features/vpathplus.base	Sun Jul 19 12:03:18 2026
---- work/features/vpathplus.log	Sun Jul 19 12:03:18 2026
-***************
-*** 1,2 ****
-! cat bar.d > bar.c
-! cat work/foo.c bar.c > foo.b 2>/dev/null || exit 1
---- 1 ----
-! No rule to make target 'foo.c', needed by 'foo.b'

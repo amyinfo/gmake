@@ -1,8 +1,0 @@
-*** work/features/statipattrules.base.11	Sun Jul 19 12:03:13 2026
---- work/features/statipattrules.log.11	Sun Jul 19 12:03:13 2026
-***************
-*** 1,2 ****
-! cp a.src a.tgt
-! cp b.src b.tgt
---- 1 ----
-! No rule to make target 'a.tgt', needed by 'all'

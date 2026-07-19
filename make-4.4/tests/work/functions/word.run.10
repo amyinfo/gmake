@@ -1,2 +1,0 @@
-# /home/kyra/workplace/go/make/make-4.4/tests/scripts/functions/word:110:
-/home/kyra/workplace/go/make/gmake -f work/functions/word.mk.2 word-e x=0

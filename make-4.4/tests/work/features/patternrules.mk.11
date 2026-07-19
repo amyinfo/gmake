@@ -1,6 +1,0 @@
-
-all: a.elf a.dbg
-
-%.elf %.lnk: %.c ; touch $*.elf $*.lnk
-
-%.elf %.dbg: %.lnk ; touch $*.elf $*.dbg

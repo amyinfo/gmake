@@ -1,7 +1,0 @@
-*** work/features/targetvars.base.18	Sun Jul 19 12:03:15 2026
---- work/features/targetvars.log.18	Sun Jul 19 12:03:15 2026
-***************
-*** 1 ****
-! MYVAR= FOOVAR=bar ALLVAR=xxx
---- 1 ----
-! No rule to make target 'MYVAR', needed by 'rules.mk'

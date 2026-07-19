@@ -1,5 +1,5 @@
-*** work/features/dircache.base	Sun Jul 19 12:02:12 2026
---- work/features/dircache.log	Sun Jul 19 12:02:12 2026
+*** work/features/dircache.base	Sun Jul 19 12:32:11 2026
+--- work/features/dircache.log	Sun Jul 19 12:32:11 2026
 ***************
 *** 1 ****
 ! diff=./anewfile

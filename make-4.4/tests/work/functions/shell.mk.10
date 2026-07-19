@@ -1,5 +1,0 @@
-
-HI = $(shell echo hi)
-bad := $(HI)
-.PHONY: all
-all: ; @echo $$HI $(bad)
