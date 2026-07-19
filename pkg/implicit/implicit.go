@@ -71,11 +71,12 @@ func getNextWord(buffer string) (string, uint) {
 				break
 			}
 			var closeparen byte
-			if buffer[p] == '(' {
+			switch buffer[p] {
+			case '(':
 				closeparen = ')'
-			} else if buffer[p] == '{' {
+			case '{':
 				closeparen = '}'
-			} else {
+			default:
 				p++
 				continue
 			}
@@ -638,10 +639,6 @@ func PatternSearch(f *types.File, archive int, depth uint, recursions uint, allo
 	f.IsTarget = true
 
 	if foundRule.Num > 1 {
-		fullStemLen := stemlen
-		if tryrules[foundruleIdx].CheckedLastslash != 0 {
-			fullStemLen += pathlen
-		}
 		for ri := uint(0); ri < uint(foundRule.Num); ri++ {
 			if ri != tryrules[foundruleIdx].Matches {
 				tgt := foundRule.Targets[ri]
