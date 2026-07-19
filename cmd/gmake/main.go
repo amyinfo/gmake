@@ -21,16 +21,23 @@ package main
 import (
 	"fmt"
 	goos "os"
+	"path/filepath"
 	"runtime"
+	"strings"
 
-	"github.com/kyra/make/pkg/config"
-	"github.com/kyra/make/pkg/debug"
-	_ "github.com/kyra/make/pkg/getopt"
-	"github.com/kyra/make/pkg/misc"
-	_ "github.com/kyra/make/pkg/os"
-	"github.com/kyra/make/pkg/strcache"
-	"github.com/kyra/make/pkg/types"
-	"github.com/kyra/make/pkg/variable"
+	"github.com/amyinfo/gmake/pkg/config"
+	"github.com/amyinfo/gmake/pkg/debug"
+	"github.com/amyinfo/gmake/pkg/expand"
+	"github.com/amyinfo/gmake/pkg/file"
+	"github.com/amyinfo/gmake/pkg/function"
+	_ "github.com/amyinfo/gmake/pkg/getopt"
+	"github.com/amyinfo/gmake/pkg/misc"
+	_ "github.com/amyinfo/gmake/pkg/os"
+	"github.com/amyinfo/gmake/pkg/read"
+	"github.com/amyinfo/gmake/pkg/remake"
+	"github.com/amyinfo/gmake/pkg/strcache"
+	"github.com/amyinfo/gmake/pkg/types"
+	"github.com/amyinfo/gmake/pkg/variable"
 )
 
 var (
@@ -60,20 +67,36 @@ func realMain() int {
 	setDefaultVariables()
 
 	// Read makefiles
-	goals := readMakefiles()
-
-	if goals == nil {
-		// No targets and no makefile
-		noRuleMsg := "*** No targets specified and no makefile found."
-		fmt.Fprintln(goos.Stderr, noRuleMsg)
-		return config.MakeFailure
-	}
+	readMakefiles()
 
 	// Build the dependency graph
 	snapDeps()
 
-	// Update the goals
-	status := updateGoals(goals)
+	targets := determineTargets()
+	if targets == nil {
+		fmt.Fprintln(goos.Stderr, "*** No targets specified and no makefile found.")
+		return config.MakeSuccess
+	}
+	goals := buildGoalChain(targets)
+
+	status := remake.UpdateGoalChain(goals)
+
+	// Map internal status to OS exit code:
+	//   UpdateSuccess(1) → MakeSuccess(0)
+	//   UpdateFailed(3)  → MakeFailure(2)
+	//   UpdateQuestion(2) → MakeTrouble(1) when -q, MakeSuccess(0) otherwise
+	switch status {
+	case types.UpdateSuccess:
+		status = types.UpdateStatus(config.MakeSuccess)
+	case types.UpdateQuestion:
+		if config.QuestionFlag {
+			status = types.UpdateStatus(config.MakeTrouble)
+		} else {
+			status = types.UpdateStatus(config.MakeSuccess)
+		}
+	default:
+		status = types.UpdateStatus(config.MakeFailure)
+	}
 
 	// Print database if requested
 	if config.PrintDataBaseFlag {
@@ -116,157 +139,196 @@ func initMake() {
 		types.OriginDefault, false)
 	variable.DefineVariableCname("SHELL", config.DefaultShell,
 		types.OriginDefault, false)
+
+	function.Init()
 }
 
 func decodeSwitches(argv []string) {
-	// Parse command-line options
 	i := 0
 	for i < len(argv) {
 		arg := argv[i]
-		if arg[0] != '-' {
-			// Non-option argument: target
+		if arg == "--" {
+			config.Goals = append(config.Goals, argv[i+1:]...)
+			return
+		}
+		if arg[0] != '-' || arg == "-" {
+			// Check for VAR=value command-line variable override
+			if eq := strings.IndexByte(arg, '='); eq > 0 && !strings.HasPrefix(arg, "-") {
+				name := arg[:eq]
+				value := arg[eq+1:]
+				variable.DefineVariableCname(name, value,
+					types.OriginCommand, false)
+				i++
+				continue
+			}
 			config.Goals = append(config.Goals, arg)
 			i++
 			continue
 		}
 
-		if arg == "--" {
-			// Rest are targets
-			config.Goals = append(config.Goals, argv[i+1:]...)
-			return
-		}
-
-		switch arg {
-		case "-b":
-			// Ignored for compatibility
-		case "-B":
-			config.AlwaysMakeFlag = true
-		case "-d":
-			config.DbLevel = debug.All
-		case "--debug":
-			if i+1 < len(argv) && argv[i+1][0] != '-' {
-				i++
-				parseDebugLevels(argv[i])
-			} else {
-				config.DbLevel = debug.Basic
-			}
-		case "-e":
-			config.EnvOverrides = true
-		case "-f":
-			i++
-			if i >= len(argv) {
-				fatal("option '-f' requires an argument")
-			}
-			config.Makefiles = append(config.Makefiles, argv[i])
-			case "-h", "--help":
+		// Long option: --xxxx
+		if len(arg) > 2 && arg[1] == '-' {
+			switch arg {
+			case "--debug":
+				if i+1 < len(argv) && argv[i+1][0] != '-' {
+					i++
+					parseDebugLevels(argv[i])
+				} else {
+					config.DbLevel = debug.Basic
+				}
+			case "--help":
 				printUsage()
 				goos.Exit(config.MakeSuccess)
-		case "-i":
-			config.IgnoreErrorsFlag = true
-		case "-I":
-			i++
-			if i >= len(argv) {
-				fatal("option '-I' requires an argument")
-			}
-			config.IncludeDirs = append(config.IncludeDirs, argv[i])
-		case "-j":
-			i++
-			if i < len(argv) && argv[i][0] != '-' {
-				slots := misc.MakeToui(argv[i], nil)
-				if slots > 0 {
-					config.JobSlots = slots
-				}
-			} else {
-				i--
-				config.JobSlots = 9999 // effectively unlimited
-			}
-		case "-k":
-			config.KeepGoingFlag = true
-		case "-l":
-			i++
-			if i < len(argv) && argv[i][0] != '-' {
-				var load float64
-				_, _ = fmt.Sscanf(argv[i], "%f", &load)
-			config.MaxLoadAverage = load
-			}
-		case "-n":
-			config.JustPrintFlag = true
-		case "-o":
-			i++
-			if i >= len(argv) {
-				fatal("option '-o' requires an argument")
-			}
-			config.OldFile = argv[i]
-		case "-p":
-			config.PrintDataBaseFlag = true
-		case "-q":
-			config.QuestionFlag = true
-		case "-r":
-			config.NoBuiltinRulesFlag = true
-		case "-R":
-			config.NoBuiltinVariablesFlag = true
-		case "-s":
-			config.RunSilent = true
-		case "-S":
-			config.KeepGoingFlag = false
-		case "-t":
-			config.TouchFlag = true
-			case "-v", "--version":
+			case "--version":
 				printVersion()
 				goos.Exit(config.MakeSuccess)
-		case "-w":
-			config.PrintDirectory = true
-		case "--no-print-directory":
-			config.PrintDirectory = false
-		case "-C":
-			i++
-			if i >= len(argv) {
-				fatal("option '-C' requires an argument")
-			}
-			if err := goos.Chdir(argv[i]); err != nil {
-				fatal("Cannot change directory to " + argv[i] + ": " + err.Error())
-			}
-		case "-W":
-			i++
-			if i >= len(argv) {
-				fatal("option '-W' requires an argument")
-			}
-			config.WhatIf = argv[i]
-		case "--warn-undefined-variables":
-			config.WarnUndefinedVariables = true
-		case "--shuffle":
-			i++
-			if i < len(argv) && argv[i][0] != '-' {
-				config.ShuffleMode = argv[i]
-			} else {
-				i--
-				config.ShuffleMode = "random"
-			}
-		case "--jobserver-style":
-			i++
-			if i >= len(argv) {
-				fatal("option '--jobserver-style' requires an argument")
-			}
-			config.JobserverStyle = argv[i]
-		case "--output-sync":
-			i++
-			if i < len(argv) && argv[i][0] != '-' {
-				switch argv[i] {
-				case "none":
-					config.OutputSync = config.OutputSyncNone
-				case "line":
-					config.OutputSync = config.OutputSyncLine
-				case "target":
-					config.OutputSync = config.OutputSyncTarget
-				case "recurse":
-					config.OutputSync = config.OutputSyncRecurse
+			case "--quiet", "--silent":
+				config.RunSilent = true
+			case "--warn-undefined-variables":
+				config.WarnUndefinedVariables = true
+			case "--shuffle":
+				if i+1 < len(argv) && argv[i+1][0] != '-' {
+					i++
+					config.ShuffleMode = argv[i]
+				} else {
+					config.ShuffleMode = "random"
 				}
+			case "--jobserver-style":
+				i++
+				if i >= len(argv) {
+					fatal("option '--jobserver-style' requires an argument")
+				}
+				config.JobserverStyle = argv[i]
+			case "--output-sync":
+				i++
+				if i < len(argv) && argv[i][0] != '-' {
+					switch argv[i] {
+					case "none":
+						config.OutputSync = config.OutputSyncNone
+					case "line":
+						config.OutputSync = config.OutputSyncLine
+					case "target":
+						config.OutputSync = config.OutputSyncTarget
+					case "recurse":
+						config.OutputSync = config.OutputSyncRecurse
+					}
+				}
+			default:
+				fatal("unknown option '" + arg + "'")
 			}
-		default:
-			if len(arg) > 1 && arg[1] != '-' {
-				// Short option cluster: -j4 etc.
-				opt := arg[1]
-				_ = opt
+			i++
+			continue
+		}
+
+		// Short option(s): -x, -xf, -j4, -sf, etc.
+		for j := 1; j < len(arg); j++ {
+			opt := arg[j]
+			switch opt {
+			case 'b', 'm':
+				// Ignored for compatibility
+			case 'B':
+				config.AlwaysMakeFlag = true
+			case 'C':
+				i++
+				if i >= len(argv) {
+					fatal("option '-C' requires an argument")
+				}
+				if err := goos.Chdir(argv[i]); err != nil {
+					fatal("Cannot change directory to " + argv[i] + ": " + err.Error())
+				}
+			case 'd':
+				config.DbLevel = debug.All
+			case 'e':
+				config.EnvOverrides = true
+			case 'f':
+				i++
+				if i >= len(argv) {
+					fatal("option '-f' requires an argument")
+				}
+				config.Makefiles = append(config.Makefiles, argv[i])
+			case 'h':
+				printUsage()
+				goos.Exit(config.MakeSuccess)
+			case 'i':
+				config.IgnoreErrorsFlag = true
+			case 'I':
+				i++
+				if i >= len(argv) {
+					fatal("option '-I' requires an argument")
+				}
+				config.IncludeDirs = append(config.IncludeDirs, argv[i])
+			case 'j':
+				remaining := arg[j+1:]
+				if remaining != "" {
+					// -jN: N attached
+					slots := misc.MakeToui(remaining, nil)
+					if slots > 0 {
+						config.JobSlots = slots
+					}
+					j = len(arg) // skip rest of arg
+				} else if i+1 < len(argv) && argv[i+1][0] != '-' {
+					// -j N: N is next arg
+					i++
+					slots := misc.MakeToui(argv[i], nil)
+					if slots > 0 {
+						config.JobSlots = slots
+					}
+				} else {
+					config.JobSlots = 9999
+				}
+			case 'k':
+				config.KeepGoingFlag = true
+			case 'l':
+				remaining := arg[j+1:]
+				if remaining != "" {
+					var load float64
+					_, _ = fmt.Sscanf(remaining, "%f", &load)
+					config.MaxLoadAverage = load
+					j = len(arg)
+				} else if i+1 < len(argv) && argv[i+1][0] != '-' {
+					i++
+					var load float64
+					_, _ = fmt.Sscanf(argv[i], "%f", &load)
+					config.MaxLoadAverage = load
+				}
+			case 'n':
+				config.JustPrintFlag = true
+			case 'o':
+				i++
+				if i >= len(argv) {
+					fatal("option '-o' requires an argument")
+				}
+				config.OldFile = argv[i]
+			case 'p':
+				config.PrintDataBaseFlag = true
+			case 'q':
+				config.QuestionFlag = true
+			case 'r':
+				config.NoBuiltinRulesFlag = true
+			case 'R':
+				config.NoBuiltinVariablesFlag = true
+			case 's':
+				config.RunSilent = true
+			case 'S':
+				config.KeepGoingFlag = false
+			case 't':
+				config.TouchFlag = true
+			case 'v':
+				printVersion()
+				goos.Exit(config.MakeSuccess)
+			case 'w':
+				config.PrintDirectory = true
+			case 'W':
+				i++
+				if i >= len(argv) {
+					fatal("option '-W' requires an argument")
+				}
+				config.WhatIf = argv[i]
+			default:
+				fatal("unknown option -- '" + string(opt) + "'")
+			}
+			if j >= len(arg) {
+				break
 			}
 		}
 		i++
@@ -348,51 +410,62 @@ func setDefaultVariables() {
 		variable.DefineVariableCname(name, val,
 			types.OriginDefault, false)
 	}
+
+	// Override MAKE to the actual binary path (as GNU Make does)
+	makePath := goos.Args[0]
+	if abs, err := filepath.Abs(makePath); err == nil {
+		makePath = abs
+	}
+	variable.DefineVariableCname("MAKE", makePath,
+		types.OriginDefault, false)
 }
 
 func readMakefiles() []*types.Goaldep {
-	// Read all makefiles
-	var goals []*types.Goaldep
+	variable.Expand = expand.VariableExpand
+	read.ConstructIncludePath("")
 
-	if len(config.Makefiles) > 0 {
-		// -f option used
-		for _, mf := range config.Makefiles {
-			g := readMakefile(mf, types.RMNoFlag)
-			if g != nil {
-				goals = append(goals, g...)
-			}
-		}
-		return goals
-	}
-
-	// Try default makefiles
-	for _, mf := range makefiles {
-		if _, err := goos.Stat(mf); err == nil {
-			g := readMakefile(mf, types.RMNoFlag)
-			if g != nil {
-				return g
-			}
-		}
-	}
-
-	return nil
-}
-
-func readMakefile(name string, flags int) []*types.Goaldep {
-	// TODO: Call the read package's read_makefile
-	if config.DbLevel&debug.Makefiles != 0 {
-		fmt.Fprintf(goos.Stderr, "Reading makefile '%s'\n", name)
-	}
-	return nil
+	goals := read.ReadAllMakefiles(config.Makefiles)
+	return goals
 }
 
 func snapDeps() {
-	// TODO: Call snap_deps from the file/remake packages
+	file.SnapDeps()
 }
 
-func updateGoals(goals []*types.Goaldep) types.UpdateStatus {
-	// TODO: Call update_goal_chain from the remake package
-	return types.UpdateSuccess
+func buildGoalChain(targets []string) *types.Goaldep {
+	var head, tail *types.Goaldep
+	for _, t := range targets {
+		f := file.EnterFile(strcache.Add(t))
+		g := &types.Goaldep{
+			Dep: types.Dep{File: f, Name_: f.Name},
+		}
+		f.IsTarget = true
+		if head == nil {
+			head = g
+			tail = g
+		} else {
+			tail.Dep.Next = &g.Dep
+			tail = g
+		}
+	}
+	return head
+}
+
+func determineTargets() []string {
+	if len(config.Goals) > 0 {
+		return config.Goals
+	}
+	if config.DefaultGoalName != "" {
+		return []string{config.DefaultGoalName}
+	}
+	allTargets := file.BuildTargetList("")
+	if allTargets != "" {
+		fields := strings.Fields(allTargets)
+		if len(fields) > 0 {
+			return fields[:1]
+		}
+	}
+	return nil
 }
 
 func printDataBase() {
@@ -405,7 +478,7 @@ func fatal(msg string) {
 }
 
 func initHashFiles() {
-	// TODO: Initialize the file hash table (init_hash_files from file.c)
+	file.InitHashFiles()
 }
 
 func init() {

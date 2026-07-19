@@ -1,7 +1,0 @@
-*** work/features/implicit_search.base.68	Sun Jul 19 12:32:16 2026
---- work/features/implicit_search.log.68	Sun Jul 19 12:32:16 2026
-***************
-*** 1 ****
-! gmake: *** No rule to make target 'hello.o', needed by 'hello.tsk'.  Stop.
---- 1 ----
-! No rule to make target 'hello.tsk', needed by 'all'

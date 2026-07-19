@@ -1,6 +1,0 @@
-
-all: hello.tsk
-%.tsk: %.x; $(info $@)
-%.x:; $(flags)
-hello.x: flags+=good
-%.x: flags:=true

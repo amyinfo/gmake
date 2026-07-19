@@ -109,13 +109,14 @@ var (
 	Environ = os.Environ()
 
 	// Additional fields used by main.go
-	Goals        []string
-	Makefiles    []string
-	IncludeDirs  []string
-	OldFile      string
-	WhatIf       string
-	ShuffleMode  string
-	JobserverStyle string
+	Goals           []string
+	Makefiles       []string
+	IncludeDirs     []string
+	OldFile         string
+	WhatIf          string
+	ShuffleMode     string
+	JobserverStyle  string
+	DefaultGoalName string
 )
 
 // GNUMAKEFLAGS_NAME / MAKEFLAGS_NAME

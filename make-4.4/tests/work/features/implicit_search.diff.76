@@ -1,8 +1,0 @@
-*** work/features/implicit_search.base.76	Sun Jul 19 12:32:17 2026
---- work/features/implicit_search.log.76	Sun Jul 19 12:32:17 2026
-***************
-*** 1 ****
-! f77 -c hello.f
---- 1,2 ----
-! Nothing to be done for 'FC=@echo f77'.
-! Nothing to be done for 'OUTPUT_OPTION='.

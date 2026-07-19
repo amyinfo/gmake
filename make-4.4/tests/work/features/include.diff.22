@@ -1,8 +1,0 @@
-*** work/features/include.base.22	Sun Jul 19 12:32:17 2026
---- work/features/include.log.22	Sun Jul 19 12:32:17 2026
-***************
-*** 1,2 ****
-! work/features/include.mk.21:2: inc1: Permission denied
-! gmake: *** No rule to make target 'inc1'.  Stop.
---- 1 ----
-! 

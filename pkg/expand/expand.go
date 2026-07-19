@@ -1,210 +1,354 @@
-// gmake - Go port of GNU Make
-//
-// Copyright (C) 1988-2022 Free Software Foundation, Inc.
-// Copyright (C) 2026 amyinfo
-//
-// gmake is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// gmake is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with gmake.  If not, see <https://www.gnu.org/licenses/>.
-
 package expand
 
 import (
 	"strings"
 
-	"github.com/kyra/make/pkg/misc"
-	"github.com/kyra/make/pkg/types"
+	"github.com/amyinfo/gmake/pkg/types"
+	"github.com/amyinfo/gmake/pkg/variable"
 )
-
-var (
-	VariableBuffer string
-	ReadingFile    *types.Floc
-	ExpandingVar   **types.Floc
-)
-
-func VariableBufferOutput(ptr string, s string, length int) string {
-	ptr += s[:length]
-	return ptr
-}
-
-func InitializeVariableOutput() string {
-	return ""
-}
-
-func InstallVariableBuffer(bufp *string, lenp *int) {
-	VariableBuffer = *bufp
-}
-
-func RestoreVariableBuffer(buf string, len int) {
-	VariableBuffer = buf
-}
-
-func VariableExpandString(line string, s string, length int) string {
-	_ = line
-	// Expand variables in string s
-	var result strings.Builder
-	i := 0
-	for i < length {
-		if s[i] == '$' {
-			if i+1 < length {
-				if s[i+1] == '$' {
-					result.WriteByte('$')
-					i += 2
-					continue
-				}
-				// Variable reference
-				ref, newI := parseVariableRef(s, i+1, length)
-				expanded := lookupAndExpand(ref)
-				result.WriteString(expanded)
-				i = newI
-				continue
-			}
-		}
-		result.WriteByte(s[i])
-		i++
-	}
-	return result.String()
-}
 
 func VariableExpand(line string) string {
 	return VariableExpandString(line, line, len(line))
 }
 
+func VariableExpandString(_ string, s string, length int) string {
+	var buf strings.Builder
+
+	if length <= 0 {
+		return buf.String()
+	}
+	if length > len(s) {
+		length = len(s)
+	}
+
+	pos := 0
+	for pos < length {
+		dollar := strings.IndexByte(s[pos:length], '$')
+		if dollar < 0 {
+			buf.WriteString(s[pos:length])
+			break
+		}
+
+		buf.WriteString(s[pos : pos+dollar])
+		pos += dollar + 1
+
+		if pos >= length {
+			buf.WriteByte('$')
+			break
+		}
+
+		ch := s[pos]
+		switch {
+		case ch == '$':
+			buf.WriteByte('$')
+			pos++
+
+		case ch == '(':
+			pos++
+
+			depth := 1
+			end := pos
+			for end < length && depth > 0 {
+				switch s[end] {
+				case '(':
+					depth++
+				case ')':
+					depth--
+				}
+				if depth > 0 {
+					end++
+				}
+			}
+			if depth > 0 {
+				buf.WriteString(s[pos-1 : length])
+				pos = length
+				break
+			}
+
+			ref := s[pos:end]
+			pos = end + 1
+
+			if strings.IndexByte(ref, '$') >= 0 {
+				ref = VariableExpandString("", ref, len(ref))
+			}
+
+			colonIdx := findColon(ref)
+			if colonIdx >= 0 {
+				substPart := ref[colonIdx+1:]
+				eqIdx := strings.IndexByte(substPart, '=')
+				if eqIdx >= 0 {
+					varName := ref[:colonIdx]
+					pattern := substPart[:eqIdx]
+					replace := substPart[eqIdx+1:]
+					result := substReference(varName, pattern, replace)
+					buf.WriteString(result)
+					continue
+				}
+			}
+
+			spaceIdx := strings.IndexAny(ref, " \t")
+			if spaceIdx > 0 {
+				funcName := ref[:spaceIdx]
+				funcArgs := strings.TrimSpace(ref[spaceIdx+1:])
+				result := callFunction(funcName, funcArgs)
+				buf.WriteString(result)
+				continue
+			}
+
+			val := referenceVariable(ref)
+			buf.WriteString(val)
+
+		case ch == '{':
+			pos++
+
+			depth := 1
+			end := pos
+			for end < length && depth > 0 {
+				switch s[end] {
+				case '{':
+					depth++
+				case '}':
+					depth--
+				}
+				if depth > 0 {
+					end++
+				}
+			}
+			if depth > 0 {
+				buf.WriteString(s[pos-1 : length])
+				pos = length
+				break
+			}
+
+			ref := s[pos:end]
+			pos = end + 1
+
+			if strings.IndexByte(ref, '$') >= 0 {
+				ref = VariableExpandString("", ref, len(ref))
+			}
+
+			colonIdx := findColon(ref)
+			if colonIdx >= 0 {
+				substPart := ref[colonIdx+1:]
+				eqIdx := strings.IndexByte(substPart, '=')
+				if eqIdx >= 0 {
+					varName := ref[:colonIdx]
+					pattern := substPart[:eqIdx]
+					replace := substPart[eqIdx+1:]
+					result := substReference(varName, pattern, replace)
+					buf.WriteString(result)
+					continue
+				}
+			}
+
+			spaceIdx := strings.IndexAny(ref, " \t")
+			if spaceIdx > 0 {
+				funcName := ref[:spaceIdx]
+				funcArgs := strings.TrimSpace(ref[spaceIdx+1:])
+				result := callFunction(funcName, funcArgs)
+				buf.WriteString(result)
+				continue
+			}
+
+			val := referenceVariable(ref)
+			buf.WriteString(val)
+
+		default:
+			val := referenceVariable(string(ch))
+			buf.WriteString(val)
+			pos++
+		}
+	}
+
+	return buf.String()
+}
+
+func referenceVariable(name string) string {
+	if name == "" {
+		return ""
+	}
+
+	v := LookupVariable(name, len(name))
+	if v == nil {
+		return ""
+	}
+	_ = v
+
+	if v.Recursive {
+		return VariableExpandString("", v.Value, len(v.Value))
+	}
+	return v.Value
+}
+
+func substReference(varName, pattern, replacement string) string {
+	v := LookupVariable(varName, len(varName))
+	if v == nil {
+		return ""
+	}
+
+	var value string
+	if v.Recursive {
+		value = VariableExpandString("", v.Value, len(v.Value))
+	} else {
+		value = v.Value
+	}
+
+	if value == "" || pattern == "" {
+		return value
+	}
+
+	return patsubstExpand(value, pattern, replacement)
+}
+
+func patsubstExpand(value, pattern, replacement string) string {
+	var result strings.Builder
+	words := strings.Fields(value)
+	for i, w := range words {
+		if i > 0 {
+			result.WriteByte(' ')
+		}
+		if pattern == "%" {
+			result.WriteString(replacement)
+		} else if strings.Contains(pattern, "%") {
+			result.WriteString(applyPattern(w, pattern, replacement))
+		} else if w == pattern {
+			result.WriteString(replacement)
+		} else {
+			result.WriteString(w)
+		}
+	}
+	return result.String()
+}
+
+func applyPattern(word, pattern, replacement string) string {
+	pct := strings.IndexByte(pattern, '%')
+	rpct := strings.IndexByte(replacement, '%')
+
+	if pct < 0 {
+		if word == pattern {
+			return replacement
+		}
+		return word
+	}
+
+	prefix := pattern[:pct]
+	suffix := pattern[pct+1:]
+
+	if !strings.HasPrefix(word, prefix) || !strings.HasSuffix(word, suffix) {
+		return word
+	}
+
+	stem := word[len(prefix) : len(word)-len(suffix)]
+
+	if rpct < 0 {
+		return replacement
+	}
+	return replacement[:rpct] + stem + replacement[rpct+1:]
+}
+
+func findColon(s string) int {
+	depth := 0
+	for i := 0; i < len(s); i++ {
+		switch s[i] {
+		case '(':
+			depth++
+		case ')':
+			if depth > 0 {
+				depth--
+			}
+		case ':':
+			if depth == 0 {
+				return i
+			}
+		}
+	}
+	return -1
+}
+
+var LookupVariable func(name string, length int) *types.Variable
+
+func init() {
+	LookupVariable = variable.LookupVariable
+}
+
+func callFunction(name, args string) string {
+	if FuncHandler != nil {
+		return FuncHandler(name, args)
+	}
+	return ""
+}
+
+var FuncHandler func(name, args string) string
+
 func VariableExpandForFile(line string, file *types.File) string {
-	_ = file
-	return VariableExpandString(line, line, len(line))
+	if file == nil {
+		return VariableExpand(line)
+	}
+	saveVSL := variable.CurrentVariableSetList
+	if file.Variables != nil {
+		variable.CurrentVariableSetList = file.Variables
+	}
+	result := VariableExpand(line)
+	variable.CurrentVariableSetList = saveVSL
+	return result
 }
 
 func AllocatedVariableExpandForFile(line string, file *types.File) string {
 	return VariableExpandForFile(line, file)
 }
 
-func ExpandArgument(str string, end string) string {
-	return VariableExpandString("", str, len(str))
+func ExpandArgument(str, end string) string {
+	if str == end {
+		return ""
+	}
+	if end == "" {
+		return AllocatedVariableExpand(str)
+	}
+	return AllocatedVariableExpand(str)
+}
+
+func AllocatedVariableExpand(line string) string {
+	return VariableExpand(line)
 }
 
 func RecursivelyExpandForFile(v *types.Variable, file *types.File) string {
-	_ = file
 	if v == nil {
 		return ""
 	}
+
 	if v.Recursive {
-		return VariableExpandString("", v.Value, len(v.Value))
+		if file == nil {
+			return VariableExpandString("", v.Value, len(v.Value))
+		}
+		return VariableExpandForFile(v.Value, file)
 	}
 	return v.Value
+}
+
+func InitializeVariableOutput() string {
+	return ""
+}
+
+func VariableBufferOutput(ptr, s string, length int) string {
+	return ptr + s[:length]
+}
+
+func InstallVariableBuffer(bufp *string, lenp *int) {
+}
+
+func RestoreVariableBuffer(buf string, length int) {
 }
 
 func HandleFunction(op *string, sp *string) int {
 	return 0
 }
 
-// parseVariableRef parses a variable reference starting at s[i]
-// Returns the variable name/key and the new index
-func parseVariableRef(s string, start, length int) (string, int) {
-	if start >= length {
-		return "", start
-	}
-
-	// Simple variable: $X or ${X} or $(X)
-	if s[start] == '(' || s[start] == '{' {
-		closeChar := byte(')')
-		if s[start] == '{' {
-			closeChar = '}'
-		}
-		end := strings.IndexByte(s[start+1:], closeChar)
-		if end < 0 {
-			return s[start+1:], length
-		}
-		return s[start+1 : start+1+end], start + 2 + end
-	}
-
-	// Single char variable: $@, $<, etc.
-	if start < length {
-		return s[start : start+1], start + 1
-	}
-
-	return "", start
-}
-
-// lookupAndExpand looks up a variable and returns its expanded value
-func lookupAndExpand(ref string) string {
-	if ref == "" {
-		return ""
-	}
-
-	// Handle function calls $(func ...)
-	if idx := strings.IndexByte(ref, ' '); idx > 0 {
-		funcName := ref[:idx]
-		args := strings.TrimSpace(ref[idx+1:])
-		return callFunction(funcName, args)
-	}
-
-	// Simple variable lookup
-	v := lookupVariable(ref, len(ref))
+func RecursivelyExpand(v *types.Variable) string {
 	if v == nil {
 		return ""
 	}
-
 	if v.Recursive {
 		return VariableExpandString("", v.Value, len(v.Value))
 	}
 	return v.Value
-}
-
-// lookupVariable looks up a variable in the current scope
-func lookupVariable(name string, length int) *types.Variable {
-	// This is a temporary stub - will be connected to the variable package
-	return nil
-}
-
-// callFunction calls a built-in make function
-func callFunction(name, args string) string {
-	// This is a stub - functions are implemented in the function package
-	return ""
-}
-
-// Helper functions
-
-func FindNextToken(s *string, length *int) string {
-	for *s != "" && misc.Isspace((*s)[0]) {
-		*s = (*s)[1:]
-	}
-	if *s == "" {
-		return ""
-	}
-	end := 0
-	for end < len(*s) && !misc.Isspace((*s)[end]) {
-		end++
-	}
-	result := (*s)[:end]
-	if length != nil {
-		*length = end
-	}
-	if end < len(*s) {
-		*s = (*s)[end+1:]
-	} else {
-		*s = ""
-	}
-	return result
-}
-
-// Register the Expand function with the variable package
-func init() {
-	// This will be set when variable package imports this
-}
-
-// SetLookupFn allows variable package to register its lookup
-var LookupVariableFn func(name string, length int) *types.Variable
-
-func init() {
-	// Later connected by the main package
 }

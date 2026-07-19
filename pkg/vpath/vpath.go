@@ -24,8 +24,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/kyra/make/pkg/config"
-	"github.com/kyra/make/pkg/strcache"
+	"github.com/amyinfo/gmake/pkg/config"
+	"github.com/amyinfo/gmake/pkg/strcache"
 )
 
 type vpathEntry struct {

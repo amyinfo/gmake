@@ -1,7 +1,0 @@
-*** work/features/grouped_targets.base.14	Sun Jul 19 12:32:15 2026
---- work/features/grouped_targets.log.14	Sun Jul 19 12:32:15 2026
-***************
-*** 1 ****
-! hello.z hello.q
---- 1 ----
-! No rule to make target 'hello.z', needed by 'all'

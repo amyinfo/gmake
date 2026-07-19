@@ -1,6 +1,0 @@
-
-all: hello
-%:: %.c; $(info $<)
-%:: %.f; $(info $<)
-.DEFAULT:; $(info $@) true
-unrelated: hello.c

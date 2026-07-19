@@ -1,8 +1,0 @@
-*** work/features/include.base.19	Sun Jul 19 12:32:17 2026
---- work/features/include.log.19	Sun Jul 19 12:32:17 2026
-***************
-*** 1,2 ****
-! work/features/include.mk.18:3: inc1: No such file or directory
-! gmake: *** No rule to make target 'foo', needed by 'inc1'.  Stop.
---- 1 ----
-! DEFAULT

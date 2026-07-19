@@ -1,7 +1,0 @@
-*** work/features/grouped_targets.base.12	Sun Jul 19 12:32:15 2026
---- work/features/grouped_targets.log.12	Sun Jul 19 12:32:15 2026
-***************
-*** 1 ****
-! gmake: Nothing to be done for 'all'.
---- 1 ----
-! No rule to make target 'hello.z', needed by 'all'

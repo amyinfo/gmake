@@ -75,8 +75,8 @@ const (
 type UpdateStatus int
 
 const (
-	UpdateSuccess  UpdateStatus = 0 // successfully updated
-	UpdateNone     UpdateStatus = 1 // no attempt yet
+	UpdateNone     UpdateStatus = 0 // no attempt yet
+	UpdateSuccess  UpdateStatus = 1 // successfully updated
 	UpdateQuestion UpdateStatus = 2 // needs update (-q)
 	UpdateFailed   UpdateStatus = 3 // update failed
 )

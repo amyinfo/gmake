@@ -1,3 +1,0 @@
-exit 1
-gmake: [work/features/errors.mk:3: one] Error 1 (ignored)
-exit 0

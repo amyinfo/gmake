@@ -1,8 +1,0 @@
-*** work/features/implicit_search.base.73	Sun Jul 19 12:32:17 2026
---- work/features/implicit_search.log.73	Sun Jul 19 12:32:17 2026
-***************
-*** 1 ****
-! gmake: *** No rule to make target 'hello.c', needed by 'hello'.  Stop.
---- 1,2 ----
-! Nothing to be done for 'FC=@echo f77'.
-! Nothing to be done for 'OUTPUT_OPTION='.

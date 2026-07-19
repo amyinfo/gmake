@@ -18,6 +18,8 @@
 
 package types
 
+import "os/exec"
+
 // File represents a target file that the makefile says how to make.
 // Port of struct file from filedef.h (lines 29-116)
 type File struct {
@@ -233,4 +235,8 @@ type Child struct {
 	Recursive bool // recursive command ('+' etc.)
 	Jobslot  bool // reserved a job slot
 	Dontcare bool // saved dontcare flag
+
+	Cmd       *exec.Cmd
+	Exited    chan struct{}
+	Processed bool
 }

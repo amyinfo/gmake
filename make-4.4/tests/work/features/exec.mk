@@ -1,3 +1,0 @@
-# shbang=
-# shell=
-all:; @$(CMD)

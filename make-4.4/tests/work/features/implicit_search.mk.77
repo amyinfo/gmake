@@ -1,4 +1,0 @@
-
-all: hello.o
-unrelated: hello.c
-%.o: %.f

@@ -1,4 +1,0 @@
-
-SHELL = /usr/bin/perl
-.SHELLFLAGS = -e
-all:; @printf "$(ANSWER)\n";

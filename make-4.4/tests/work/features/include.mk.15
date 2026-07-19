@@ -1,9 +1,0 @@
-
-include bar
--include foo
-
-all:
-
-foo: baz
-bar: baz
-baz: end

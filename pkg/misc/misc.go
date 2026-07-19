@@ -26,7 +26,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/kyra/make/pkg/config"
+	"github.com/amyinfo/gmake/pkg/config"
 )
 
 var stopcharMap [256]uint16

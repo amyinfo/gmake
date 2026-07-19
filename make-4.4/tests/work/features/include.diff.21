@@ -1,7 +1,0 @@
-*** work/features/include.base.21	Sun Jul 19 12:32:17 2026
---- work/features/include.log.21	Sun Jul 19 12:32:17 2026
-***************
-*** 1 ****
-! work/features/include.mk.20:4: hello.mk: No such file or directory
---- 1 ----
-! FOO=

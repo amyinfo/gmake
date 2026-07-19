@@ -1,8 +1,0 @@
-*** work/features/implicit_search.base.85	Sun Jul 19 12:32:17 2026
---- work/features/implicit_search.log.85	Sun Jul 19 12:32:17 2026
-***************
-*** 1,2 ****
-! true
-! hello.tsk
---- 1 ----
-! No rule to make target 'hello.tsk', needed by 'all'

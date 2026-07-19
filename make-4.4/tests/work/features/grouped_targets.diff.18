@@ -1,7 +1,0 @@
-*** work/features/grouped_targets.base.18	Sun Jul 19 12:32:15 2026
---- work/features/grouped_targets.log.18	Sun Jul 19 12:32:15 2026
-***************
-*** 1 ****
-! touch gta gtb
---- 1 ----
-! No rule to make target 'pre', needed by 'gta'

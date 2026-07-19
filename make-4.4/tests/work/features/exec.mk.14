@@ -1,2 +1,0 @@
-
-all:; @/usr/bin/perl -e 'printf "$(ANSWER)\n"';

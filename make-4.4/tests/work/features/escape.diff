@@ -1,7 +1,0 @@
-*** work/features/escape.base	Sun Jul 19 12:32:13 2026
---- work/features/escape.log	Sun Jul 19 12:32:13 2026
-***************
-*** 1 ****
-! touch (foo)
---- 1 ----
-! *** No targets specified and no makefile found.

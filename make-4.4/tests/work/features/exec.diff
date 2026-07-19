@@ -1,7 +1,0 @@
-*** work/features/exec.base	Sun Jul 19 12:32:14 2026
---- work/features/exec.log	Sun Jul 19 12:32:14 2026
-***************
-*** 1 ****
-! hello, world
---- 1 ----
-! Nothing to be done for 'CMD=./exec.cmd'.

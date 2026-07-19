@@ -23,9 +23,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/kyra/make/pkg/config"
-	"github.com/kyra/make/pkg/strcache"
-	"github.com/kyra/make/pkg/types"
+	"github.com/amyinfo/gmake/pkg/config"
+	"github.com/amyinfo/gmake/pkg/strcache"
+	"github.com/amyinfo/gmake/pkg/types"
 )
 
 var (
@@ -148,6 +148,13 @@ func DoVariableDefinition(flocp *types.Floc, name, value string,
 	_ = targetVar
 	v := LookupVariable(name, len(name))
 
+	// Respect variable origin priority: don't overwrite a variable defined
+	// from a higher-precedence source (e.g., command-line overrides makefile).
+	// Override directive (OriginOverride) overrides everything.
+	if v != nil && origin < v.Origin && origin != types.OriginOverride {
+		return v
+	}
+
 	switch flavor {
 	case types.FlavorRecursive:
 		if v != nil && v.Origin == types.OriginAutomatic {
@@ -176,12 +183,16 @@ func DoVariableDefinition(flocp *types.Floc, name, value string,
 		if v == nil {
 			return DefineVariableInSet(name, len(name), value, origin, true, nil, flocp)
 		}
-		// Append
+		// Append (add leading space separator only if existing value is non-empty, like GNU Make)
+		appended := value
+		if v.Value != "" {
+			appended = " " + value
+		}
 		if v.Recursive {
-			v.Value += value
+			v.Value += appended
 		} else {
 			// For simple variables, expand and append
-			expanded := ExpandVariable(value)
+			expanded := ExpandVariable(appended)
 			v.Value += expanded
 		}
 		return v
@@ -352,6 +363,15 @@ func InitializeFileVariables(file *types.File, reading int) {
 		},
 	}
 	_ = reading
+}
+
+func DefineVariableForFile(name string, length int, value string,
+	origin types.VariableOrigin, recursive bool, file *types.File) *types.Variable {
+
+	if file == nil || file.Variables == nil || file.Variables.Set == nil {
+		return DefineVariableInSet(name, length, value, origin, recursive, nil, nil)
+	}
+	return DefineVariableInSet(name, length, value, origin, recursive, file.Variables.Set, nil)
 }
 
 func PrintFileVariables(file *types.File) {

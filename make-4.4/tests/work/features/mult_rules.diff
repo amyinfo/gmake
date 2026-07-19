@@ -1,7 +1,0 @@
-*** work/features/mult_rules.base	Sun Jul 19 12:32:18 2026
---- work/features/mult_rules.log	Sun Jul 19 12:32:18 2026
-***************
-*** 1 ****
-! gmake: *** No rule to make target 'extra.h', needed by 'foo.o'.  Stop.
---- 1 ----
-! Nothing to be done for 'extradeps=extra.h'.

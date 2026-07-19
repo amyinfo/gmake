@@ -1,4 +1,0 @@
-
-all: hello.z
-%.z %.q: %.x ; touch $*.z $*.q
-%.x: ;

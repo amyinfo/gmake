@@ -1,8 +1,0 @@
-*** work/features/implicit_search.base.11	Sun Jul 19 12:32:15 2026
---- work/features/implicit_search.log.11	Sun Jul 19 12:32:15 2026
-***************
-*** 1,2 ****
-! fail 1
-! gmake: *** [work/features/implicit_search.mk.11:5: hello.c] Error 1
---- 1 ----
-! No rule to make target 'hello', needed by 'all'

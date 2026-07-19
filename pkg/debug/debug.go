@@ -23,7 +23,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/kyra/make/pkg/config"
+	"github.com/amyinfo/gmake/pkg/config"
 )
 
 const (
@@ -52,8 +52,14 @@ func DBS(level int, depth uint, format string, args ...interface{}) {
 
 func DBF(level int, format string, file string, args ...interface{}) {
 	if IsDb(level) {
-		msg := fmt.Sprintf(format, args...)
-		_, _ = fmt.Fprintf(os.Stdout, "%s\n", fmt.Sprintf(msg, file))
+		if strings.Contains(format, "%s") {
+			// format has a %s for the filename; args are additional
+			msg := fmt.Sprintf(format, append([]interface{}{file}, args...)...)
+			_, _ = fmt.Fprintf(os.Stdout, "%s\n", msg)
+		} else {
+			msg := fmt.Sprintf(format, args...)
+			_, _ = fmt.Fprintf(os.Stdout, "%s\n", msg)
+		}
 	}
 }
 

@@ -1,2 +1,0 @@
-fail 1
-gmake: *** [work/features/implicit_search.mk.57:6: hello.c] Error 1

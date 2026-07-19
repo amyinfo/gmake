@@ -1,4 +1,0 @@
-
-all: hello.tsk
-%.tsk: %; $(info $@ from $<)
-unrelated: hello

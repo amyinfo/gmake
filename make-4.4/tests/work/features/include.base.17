@@ -1,3 +1,0 @@
-echo > inc1
-work/features/include.mk.16:7: inc2: No such file or directory
-gmake: *** No rule to make target 'inc2'.  Stop.

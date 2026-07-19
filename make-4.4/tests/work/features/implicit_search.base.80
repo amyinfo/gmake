@@ -1,3 +1,0 @@
-f77 hello.f -o hello
-hello.x from hello.xx
-hello.tsk from hello hello.x

@@ -1,7 +1,0 @@
-
-x1 x2: ; touch $@
-
-x1: gta
-x2: gtb
-
-gta gtb &: ; touch gta gtb

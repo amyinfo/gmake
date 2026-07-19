@@ -1,5 +1,0 @@
-
-all: hello.tsk
-%.tsk: %.x; touch hello.tsk
-%.x: ;
-unrelated: hello.x
